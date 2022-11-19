@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
-    <title>PengChan's homepage</title>
+    <title>Xingyu Xiao's homepage</title>
     <meta name="description" content="PengChan, graduated from University of Science and Technology,Beijing, 
     is studying human-computer interaction and virtual reality at University of Chinese Academy of Sciences
      for a master's degree.">
@@ -34,7 +34,7 @@
                                     src="./assets/imgs/xiaoxingyu.jpg"
                                     alt="avatar">
                                 <div class="author-info__name">Xingyu Xiao(萧星宇)</div>
-                                <div class="author-info__description">Xingyu Xiao, born on <em>04/2001</em>, about to graduate from 
+                                <div class="author-info__description">Xingyu Xiao, borned on <em>04/2001</em>, about to graduate from 
                                     <b>University of Science and Technology, Beijing</b>,  
                                     will devote myself to studying Nuclear Safety at 
                                     <b>Institude of Nuclear and New Energy Technology,TsingHua University</b>
@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                             <div class="card-info-social-icons is-center">
-                                <a class="social-icon" href="https://github.com/ChenVoid" target="_blank">
+                                <a class="social-icon" href="https://github.com/Crystalxy123" target="_blank">
                                     <i class="fa fa-github"></i>
                                 </a>
                             </div>
@@ -71,15 +71,15 @@
                         <div class="card-content">
                             <div class="item-headline">
                                 <i class="fa fa-book" aria-hidden="true"></i>
-                                <span>Postgraduate &nbsp &nbsp <em>[09/2023-07/2026]</em></span>
+                                <span>PhD &nbsp &nbsp <em>[09/2023-07/2028]</em></span>
                             </div>
                             <div id="Postgraduate"><b>Institude of Nuclear and New Energy Technology,TsingHua University</b></div>
                             <!-- <div id="Postgraduate-time"></div> -->
                             <img class="avatar-img"
-                                    src="./assets/imgs/thu.jpg"
+                                    src="./assets/imgs/thu.jpeg"
                                     width="50px"
                                     height="50px"
-                                    alt="UCAS">
+                                    alt="thu">
                             
                         </div>
                     </div>
@@ -158,14 +158,18 @@
                         <div class="tool">
                             <ul>
                                 <li>
-                                    <a href="https://mp.weixin.qq.com/s/UC-XMN9_mTj-Ijn88F-0PA.html" target="_blank">[09/2022] 
-                                        A short introduction about my undergraduate time!</a>
+                                    <a href="https://mp.weixin.qq.com/s/UC-XMN9_mTj-Ijn88F-0PA" target="_blank">[09/2022] 
+                                        <b>A short introduction about my undergraduate time.</b>
+                                    </a>
                                 </li>
                                 <li>
                                     [12/2020] I won <b>Second Prize in the 12th National Student Mathematics Competition</b>.
+                                </li>
+                                <li>
                                     [09/2021] I won <b>National Scholarship</b> ranking <b>1th</b> out of 53 students in my major.
+                                </li>
+                                <li>
                                     [09/2022] I won <b>National Scholarship</b> ranking <b>1th</b> out of 52 students in my major.
-
                                 </li>
                             </ul>
                         </div>
@@ -254,12 +258,12 @@
         document.addEventListener('visibilitychange', function () {
             if (document.hidden) {
                 // $('[rel="icon"]').attr('href', "/funny.ico");
-                document.title = 'PengChan\'s homepage';
+                // document.title = 'PengChan\'s homepage';
                 clearTimeout(titleTime);
             }
             else {
                 $('[rel="icon"]').attr('href', "/favicon.ico");
-                document.title = 'PengChan\'s homepage' + OriginTitle;
+                // document.title = 'PengChan\'s homepage' + OriginTitle;
                 titleTime = setTimeout(function () {
                     document.title = OriginTitle;
                 }, 2000);
