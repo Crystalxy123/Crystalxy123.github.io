@@ -12,7 +12,7 @@ redirect_from:
 Education
 ======
 * Ph.D in Nuclear Science and Technology, Tsinghua University, 2023-now
-* B.S. in Safety Enjorneering, Univeristy of Science and Technology, 2019-2023
+* B.S. in Safety Engineering, University of Science and Technology, 2019-2023
 
 Work experience
 ======
@@ -51,12 +51,12 @@ Talks
   <ul>{% for post in site.talks reversed %}
     {% include archive-single-talk-cv.html  %}
   {% endfor %}</ul>
-  
+<!--   
 Teaching
 ======
   <ul>{% for post in site.teaching reversed %}
     {% include archive-single-cv.html %}
-  {% endfor %}</ul>
+  {% endfor %}</ul> -->
   
 Service and leadership
 ======
