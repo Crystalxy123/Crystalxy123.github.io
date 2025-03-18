@@ -14,7 +14,7 @@ Education
 * Ph.D in Nuclear Science and Technology, Tsinghua University, 2023-now
 * B.S. in Safety Engineering, University of Science and Technology, 2019-2023
 
-Work experience
+<!-- Work experience
 ======
 * Spring 2024: Academic Pages Collaborator
   * GitHub University
@@ -29,16 +29,20 @@ Work experience
 * Summer 2015: Research Assistant
   * GitHub University
   * Duties included: Tagging issues
-  * Supervisor: Professor Git
+  * Supervisor: Professor Git -->
   
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* Large Language Model
+  * Reasoning 2.1
+  * Workflow Agent 2.2
+  * Supervised Fine-Tuning 2.3
+* Aritificial Intelligence
+* Advanced HRA Methods: IDHEAS, IDHEAS-ECA
+* Knowlegde Graph
+* Cognitive Model: ACT-R
+* Decision Support
+
 
 Publications
 ======
@@ -58,6 +62,6 @@ Teaching
     {% include archive-single-cv.html %}
   {% endfor %}</ul> -->
   
-Service and leadership
+<!-- Service and leadership
 ======
-* Currently signed in to 43 different slack teams
+* Currently signed in to 43 different slack teams -->
