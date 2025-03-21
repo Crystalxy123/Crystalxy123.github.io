@@ -8,6 +8,7 @@ Experimental results demonstrate that the proposed workload estimation with LLMs
 date: 2025-01-16
 venue: 'Arxiv'
 paperurl: 'http://crystalxy123.github.io/files/paper1.pdf'
+![Editing a markdown file for a talk](/images/editing-talk.png)
 citation: 'Xiao, X., Chen, P., Jia, Q., Tong, J., Liang, J., & Wang, H. (2025). A Dynamic and High-Precision Method for Scenario-Based HRA Synthetic Data Collection in Multi-Agent Collaborative Environments Driven by LLMs. arXiv preprint arXiv:2502.00022.'
 ---
 
