@@ -34,14 +34,14 @@ Education
 Skills
 ======
 * Large Language Model
-  * Reasoning 2.1
-  * Workflow Agent 2.2
-  * Supervised Fine-Tuning 2.3
+  * Reasoning
+  * Workflow Agent
+  * Supervised Fine-Tuning
 * Aritificial Intelligence
 * Advanced HRA Methods: IDHEAS, IDHEAS-ECA
 * Knowlegde Graph
 * Cognitive Model: ACT-R
-* Decision Support
+* Risk-informed Decision Support
 
 
 Publications
