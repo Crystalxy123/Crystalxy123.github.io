@@ -4,7 +4,7 @@ collection: publications
 category: manuscripts
 # permalink: /publication/2010-10-01-paper-title-number-2
 # excerpt: ''
-date: 2023
+date: 2023-12-20
 venue: 'Risk Analysis'
 # slidesurl: 'http://academicpages.github.io/files/slides2.pdf'
 citation: 'Deng, Q., Xiao, X., Zhu, L., Cao, X., Liu, K., Zhang, H., ... & Liu, Y. (2023). A national risk analysis model (NRAM) for the assessment of COVID‐19 epidemic. Risk Analysis, 43(10), 1946-1961.'

@@ -10,7 +10,6 @@ date: 2024-08-04
        <img src="/images/icon31.jpg" alt="A comprehensive workflow for nuclear fault tree generation in this study." width="500"/>
      </p>
 
-![A comprehensive workflow for nuclear fault tree generation in this study.](/images/icon31.jpg)
 
 venue: '31st International Conference on Nuclear Engineering'
 paperurl: 'https://www.researchgate.net/profile/Xingyu-Xiao-4/publication/385473861_A_Text_Intelligence-Based_Approach_for_Automatic_Generation_of_Fault_Trees_in_Nuclear_Power_Plants/links/67335a034a70511f071bf590/A-Text-Intelligence-Based-Approach-for-Automatic-Generation-of-Fault-Trees-in-Nuclear-Power-Plants.pdf'
