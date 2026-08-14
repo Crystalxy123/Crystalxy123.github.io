@@ -9,38 +9,38 @@ const { lang, section } = Astro.props as { lang: Lang; section: Section };
 const copy = {
   about: {
     label: { zh: '个人介绍', en: 'About' },
-    title: { zh: '理解复杂系统中的人，并让智能真正服务于安全', en: 'Understanding people in complex systems—and making intelligence serve safety' },
+    title: { zh: '关于我', en: 'About me' },
     intro: { zh: '萧星宇，清华大学核能与新能源技术研究院 2023 级直博生，研究数字化核电厂人因失误动态建模与智能防控。', en: 'Xingyu Xiao is a direct-entry PhD student (class of 2023) at Tsinghua University’s Institute of Nuclear and New Energy Technology, studying dynamic human-error modeling and intelligent prevention in digital nuclear power plants.' },
   },
   research: {
     label: { zh: '研究方向', en: 'Research' },
-    title: { zh: '人的可靠性，是高自治系统不可绕开的安全核心', en: 'Human reliability is a safety core that high-autonomy systems cannot bypass' },
-    intro: { zh: '研究围绕一个核心问题展开：当核电系统更数字化、更智能、更自主时，如何理解人的认知与失误，并建立可验证的人机协同安全边界？', en: 'My work centers on one question: as nuclear systems become more digital, intelligent, and autonomous, how can we understand human cognition and error while building verifiable safety boundaries for human–AI collaboration?' },
+    title: { zh: '研究方向', en: 'Research areas' },
+    intro: { zh: '我研究数字化核电厂中的认知与操作失误，以及人工智能方法如何在保留人工监督的前提下用于决策支持。', en: 'I study cognition and human error in digital nuclear power plants, including how AI can support decisions while preserving human oversight.' },
   },
   publications: {
     label: { zh: '论文与学术成果', en: 'Publications' },
-    title: { zh: '以公开题录连接研究问题、方法与证据', en: 'Connecting research questions, methods, and evidence through public records' },
-    intro: { zh: '以下为从旧站和本地论文材料恢复的 15 条公开成果记录，默认按年份倒序。总论文数以 2026 年 8 月任务资料所述“约 25 篇”为准，完整清单仍需最新版正式 CV 补充。', en: 'Below are 15 public records recovered from the legacy site and local paper material, sorted by year. The August 2026 brief reports approximately 25 papers in total; a current formal CV is still needed to complete the list.' },
+    title: { zh: '论文', en: 'Publications' },
+    intro: { zh: '本页收录 15 条公开成果记录，按年份倒序排列。论文总数约 25 篇，后续将继续补充完整题录。', en: 'This page lists 15 public records in reverse chronological order. The current publication total is approximately 25, and the remaining records will be added later.' },
   },
   projects: {
     label: { zh: '代表性项目', en: 'Projects' },
-    title: { zh: '把研究方法做成可讨论、可验证的系统原型', en: 'Turning methods into systems that can be discussed and tested' },
-    intro: { zh: '项目页区分论文支持的研究成果、尚在演进的研究原型和旧站归档演示。所有动态后端均已移除。', en: 'Projects distinguish paper-supported research, evolving prototypes, and legacy archived demos. All dynamic backends have been removed.' },
+    title: { zh: '项目', en: 'Projects' },
+    intro: { zh: '这里列出已发表研究、研究原型和归档演示。部分旧项目依赖服务器，目前只保留项目说明。', en: 'This page lists published research, research prototypes, and archived demos. Some older projects depended on a server, so only their documentation remains available.' },
   },
   honors: {
     label: { zh: '荣誉与经历', en: 'Honors & experience' },
-    title: { zh: '认可来自长期积累，也应以可核实记录为准', en: 'Recognition reflects sustained work—and should remain verifiable' },
-    intro: { zh: '仅收录旧站正式 CV 或任务资料能够支持的条目；名称存在冲突的奖项暂不公开。', en: 'Only entries supported by the legacy formal CV or migration brief are included; honors with conflicting names are withheld.' },
+    title: { zh: '荣誉与经历', en: 'Honors and experience' },
+    intro: { zh: '本页列出已核实的奖项和学术经历。名称或记录尚未核对清楚的条目暂未收录。', en: 'This page lists awards and academic experience that have been checked against available records. Items with unresolved names or dates are not included.' },
   },
   service: {
     label: { zh: '学术服务与公共参与', en: 'Service & engagement' },
-    title: { zh: '让严谨研究进入同行共同体，也进入公共讨论', en: 'Bringing rigorous research into peer communities and public dialogue' },
-    intro: { zh: '学术服务、核科普与青年公共参与共同构成研究之外的责任实践。', en: 'Peer service, nuclear science communication, and youth engagement form a responsibility beyond research itself.' },
+    title: { zh: '学术服务与公共参与', en: 'Service and public engagement' },
+    intro: { zh: '主要包括期刊同行评审、核科普和认知科学内容分享。', en: 'My service includes journal peer review, nuclear science communication, and writing about cognitive science.' },
   },
   contact: {
     label: { zh: '联系方式', en: 'Contact' },
-    title: { zh: '从一个清晰的问题开始合作', en: 'Start a collaboration with a clear question' },
-    intro: { zh: '欢迎高校教师、科研团队、能源行业与国际青年网络就公开研究方向联系。请勿通过本页面发送敏感运行数据或未公开材料。', en: 'Faculty, research groups, energy-industry teams, and international youth networks are welcome to reach out about public research themes. Please do not send sensitive operational data or unpublished material.' },
+    title: { zh: '联系方式', en: 'Contact' },
+    intro: { zh: '如需讨论公开研究、论文或项目合作，请通过邮件联系。请勿发送敏感运行数据或未公开材料。', en: 'Please use email for questions about public research, papers, or project collaboration. Do not send sensitive operational data or unpublished material.' },
   },
 } as const;
 const hero = copy[section];
@@ -61,14 +61,10 @@ const projectStatuses = [...new Set(projects.map((item) => item.status))];
     <article class="prose lead-prose">
       <h2>{lang === 'zh' ? '研究者简介' : 'Researcher profile'}</h2>
       <p>{t(profile.shortBio, lang)}</p>
-      <p>{lang === 'zh' ? '研究关注核安全、人因可靠性分析、人工智能与认知建模的交叉地带。与其把人工智能视为替代操纵员的单一工具，更重要的问题是：怎样把机器能力嵌入明确的功能分配、人在回路监督和可解释验证框架。' : 'My research sits at the intersection of nuclear safety, human reliability analysis, AI, and cognitive modeling. Rather than treating AI simply as a replacement for operators, I focus on how machine capabilities can be embedded within explicit function allocation, human oversight, and explainable verification.'}</p>
-      <p>{lang === 'zh' ? '当前工作从动态 HEP、界面与操作行为数据、知识图谱智能体和多角色工作负荷等不同尺度，探索下一代核电智能决策与高自治运行的安全基础。' : 'Current work examines the safety foundations of next-generation nuclear decision support and high-autonomy operations across multiple scales—from dynamic HEP and interaction data to knowledge-graph agents and multi-role workload.'}</p>
-      <h2>{lang === 'zh' ? '研究原则' : 'Research principles'}</h2>
-      <ul class="principle-list">
-        <li><strong>01</strong><span>{lang === 'zh' ? '从真实运行问题出发，而不是从模型能力出发。' : 'Start from real operational problems, not model capability.'}</span></li>
-        <li><strong>02</strong><span>{lang === 'zh' ? '让风险判断有证据、有边界、可追溯。' : 'Make risk judgments evidence-based, bounded, and traceable.'}</span></li>
-        <li><strong>03</strong><span>{lang === 'zh' ? '保留人的最终监督与系统级安全责任。' : 'Preserve human oversight and system-level safety accountability.'}</span></li>
-      </ul>
+      <p>{lang === 'zh' ? '我的研究涉及核安全、人因可靠性分析、人工智能和认知建模。重点是在人机功能分配清楚、人工监督保留、结果可以核查的前提下，把人工智能用于核电运行支持。' : 'My research covers nuclear safety, human reliability analysis, AI, and cognitive modeling. I focus on uses of AI that have clear function allocation, retain human oversight, and produce results that can be checked.'}</p>
+      <p>{lang === 'zh' ? '目前的工作包括动态 HEP 建模、界面与操作行为数据分析、知识图谱智能体和多岗位工作负荷估计。' : 'My current work includes dynamic HEP modeling, analysis of interface and operator behavior data, knowledge-graph agents, and workload estimation across operator roles.'}</p>
+      <h2>{lang === 'zh' ? '研究方法' : 'Approach'}</h2>
+      <p>{lang === 'zh' ? '研究通常从具体运行问题出发，再选择合适的数据和模型。风险判断需要说明证据来源、适用范围和不确定性，并保留人工监督。' : 'I start with a specific operational problem, then select the data and models needed to study it. Risk assessments should state their evidence, scope, and uncertainty while preserving human oversight.'}</p>
     </article>
     <aside class="profile-aside">
       <picture><source srcset="/images/xingyu-xiao.webp" type="image/webp" /><img src="/images/xingyu-xiao.jpg" width="800" height="1200" loading="lazy" alt={t(profile.name, lang)} /></picture>
@@ -93,12 +89,12 @@ const projectStatuses = [...new Set(projects.map((item) => item.status))];
       {researchThemes.map((theme) => <article class="theme-card"><span class="theme-code">{theme.code}</span><h2>{t(theme.title, lang)}</h2><p>{t(theme.description, lang)}</p><div class="tag-row">{theme.tags.map((tag) => <span>{tag}</span>)}</div></article>)}
     </div>
     <section class="research-chain">
-      <div class="section-intro"><p class="section-label">{lang === 'zh' ? '方法路径' : 'Method chain'}</p><h2>{lang === 'zh' ? '机制理解 → 数据表征 → 智能辅助 → 安全验证' : 'Mechanism → data → intelligent support → safety verification'}</h2></div>
+      <div class="section-intro"><p class="section-label">{lang === 'zh' ? '方法' : 'Method'}</p><h2>{lang === 'zh' ? '从问题到验证' : 'From problem definition to validation'}</h2></div>
       <ol>
-        <li><span>01</span><div><h3>{lang === 'zh' ? '理解人' : 'Understand people'}</h3><p>{lang === 'zh' ? '刻画认知功能、绩效影响因素、团队协作与失误模式。' : 'Model cognitive functions, performance-influencing factors, team coordination, and error modes.'}</p></div></li>
-        <li><span>02</span><div><h3>{lang === 'zh' ? '连接数据' : 'Connect data'}</h3><p>{lang === 'zh' ? '融合运行日志、界面轨迹、时序参数、实验与专家知识。' : 'Integrate operation logs, interaction trajectories, time-series parameters, experiments, and expert knowledge.'}</p></div></li>
-        <li><span>03</span><div><h3>{lang === 'zh' ? '构建支持' : 'Build support'}</h3><p>{lang === 'zh' ? '使用概率模型、知识图谱、大语言模型与多智能体形成风险感知和决策建议。' : 'Use probabilistic models, knowledge graphs, LLMs, and multiple agents for risk awareness and decision guidance.'}</p></div></li>
-        <li><span>04</span><div><h3>{lang === 'zh' ? '验证边界' : 'Verify boundaries'}</h3><p>{lang === 'zh' ? '以可解释性、专家在环、规程一致性和安全约束评估智能系统。' : 'Evaluate intelligent systems through explainability, expert-in-the-loop review, procedural consistency, and safety constraints.'}</p></div></li>
+        <li><span>01</span><div><h3>{lang === 'zh' ? '定义问题' : 'Define the problem'}</h3><p>{lang === 'zh' ? '明确运行情景、人员任务和需要评估的失误模式。' : 'Specify the operating scenario, operator tasks, and error modes to be assessed.'}</p></div></li>
+        <li><span>02</span><div><h3>{lang === 'zh' ? '整理数据' : 'Prepare the data'}</h3><p>{lang === 'zh' ? '整理运行日志、界面轨迹、时序参数、实验数据和专家知识。' : 'Prepare operation logs, interaction traces, time-series parameters, experimental data, and expert knowledge.'}</p></div></li>
+        <li><span>03</span><div><h3>{lang === 'zh' ? '建立模型' : 'Build the model'}</h3><p>{lang === 'zh' ? '根据问题选择概率模型、知识图谱或大语言模型。' : 'Choose probabilistic models, knowledge graphs, or language models according to the problem.'}</p></div></li>
+        <li><span>04</span><div><h3>{lang === 'zh' ? '检查结果' : 'Check the results'}</h3><p>{lang === 'zh' ? '检查结果是否符合规程和安全约束，并由专家复核。' : 'Check the results against procedures and safety constraints, followed by expert review.'}</p></div></li>
       </ol>
     </section>
   </div>
@@ -133,7 +129,7 @@ const projectStatuses = [...new Set(projects.map((item) => item.status))];
       <h2>{lang === 'zh' ? '学术认可' : 'Academic recognition'}</h2>
       <ol class="honor-list">{honors.map((item) => <li><span>{item.year}</span><div><h3>{t(item.title, lang)}</h3><p>{t(item.note, lang)}</p></div></li>)}</ol>
     </section>
-    <aside class="verification-note"><p class="section-label">{lang === 'zh' ? '资料边界' : 'Evidence boundary'}</p><h2>{lang === 'zh' ? '谨慎比完整更重要' : 'Caution matters more than completeness'}</h2><p>{lang === 'zh' ? '任务资料还提到清苗学者、核能院士奖学金、综合一等奖学金等经历，但旧站材料存在名称差异或缺少正式记录，因此未在此页面发布。待最新 CV 核实后再更新。' : 'The migration brief also mentions Qingmiao Scholar, a nuclear-energy academician scholarship, and a comprehensive first-class scholarship. Because names conflict or formal records are absent in the local source, they are withheld until a current CV confirms them.'}</p></aside>
+    <aside class="verification-note"><p class="section-label">{lang === 'zh' ? '说明' : 'Note'}</p><h2>{lang === 'zh' ? '资料来源' : 'Sources'}</h2><p>{lang === 'zh' ? '本页只列出目前能够核对的记录。名称或时间存在差异的条目，待正式履历确认后再补充。' : 'This page includes records that can currently be checked. Items with conflicting names or dates will be added after a formal CV confirms them.'}</p></aside>
   </div>
 )}
 
@@ -150,7 +146,7 @@ const projectStatuses = [...new Set(projects.map((item) => item.status))];
       <p class="section-label">Email</p>
       <a class="email-display" href={`mailto:${profile.email}`}>{profile.email}</a>
       <button class="button button-secondary" type="button" data-copy-email={profile.email} data-copied-label={lang === 'zh' ? '邮箱已复制' : 'Email copied'}>{lang === 'zh' ? '复制邮箱' : 'Copy email'}</button>
-      <p>{lang === 'zh' ? '建议在邮件中简要说明研究问题、合作背景和希望讨论的下一步。' : 'A helpful first message briefly explains the research question, collaboration context, and desired next step.'}</p>
+      <p>{lang === 'zh' ? '来信请简要说明研究问题、合作背景和希望讨论的内容。' : 'Please briefly describe the research question, collaboration context, and what you would like to discuss.'}</p>
     </section>
     <section class="contact-links">
       <h2>{lang === 'zh' ? '公开学术主页' : 'Public profiles'}</h2>
