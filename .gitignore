@@ -1,0 +1,33 @@
+# Dependencies and build output
+node_modules/
+dist/
+.astro/
+.cache/
+coverage/
+
+# Local previews and test artifacts
+artifacts/
+playwright-report/
+test-results/
+
+# Environment files and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.key
+id_rsa*
+credentials*
+
+# Editor and operating-system files
+.DS_Store
+._*
+.idea/
+.vscode/
+*.log
+
+# The 3.3 GB legacy workspace is retained locally for reference only. It contains
+# nested repositories, build outputs, environments, research data, and secrets.
+/academic-website/
+
