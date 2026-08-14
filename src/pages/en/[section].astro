@@ -1,0 +1,25 @@
+---
+import ContentPage from '../../components/ContentPage.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sections } from '../../data/navigation';
+import type { Section } from '../../data/navigation';
+
+export function getStaticPaths() {
+  return sections.map((section) => ({ params: { section }, props: { section } }));
+}
+
+const { section } = Astro.props as { section: Section };
+const meta = {
+  about: ['About Xingyu Xiao', 'Education, research positioning, and the academic path of Xingyu Xiao.'],
+  research: ['Research', 'Nuclear human reliability, digital control rooms, intelligent decision support, and high-autonomy operations.'],
+  publications: ['Publications', 'Public journal articles, conference papers, and preprints by Xingyu Xiao.'],
+  projects: ['Research projects', 'Research projects including DRIF, KRAIL, AutoGraph, WELLA, and InSight-R.'],
+  honors: ['Honors & experience', 'Academic recognition and experience verified against local formal records.'],
+  service: ['Service & engagement', 'Peer review, nuclear science communication, academic outreach, and public engagement.'],
+  contact: ['Contact Xingyu Xiao', 'Contact Xingyu Xiao through a public academic email and verified public profiles.'],
+} as const;
+---
+<BaseLayout lang="en" title={meta[section][0]} description={meta[section][1]} section={section}>
+  <ContentPage lang="en" section={section} />
+</BaseLayout>
+

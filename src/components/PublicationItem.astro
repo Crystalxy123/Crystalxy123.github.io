@@ -1,0 +1,45 @@
+---
+import type { Lang, Publication } from '../data/site';
+
+const { publication, lang, compact = false } = Astro.props as { publication: Publication; lang: Lang; compact?: boolean };
+const roleLabels = {
+  'First author': { zh: '第一作者', en: 'First author' },
+  'Co-first author': { zh: '共同第一作者', en: 'Co-first author' },
+  'Co-author': { zh: '共同作者', en: 'Co-author' },
+  'Corresponding author': { zh: '通讯作者', en: 'Corresponding author' },
+};
+const statusLabels = {
+  Published: { zh: '已发表', en: 'Published' },
+  Conference: { zh: '会议论文', en: 'Conference paper' },
+  Preprint: { zh: '预印本', en: 'Preprint' },
+};
+---
+
+<article
+  class:list={['publication', compact && 'publication-compact']}
+  data-filter-item={!compact ? '' : undefined}
+  data-year={!compact ? String(publication.year) : undefined}
+  data-topic={!compact ? publication.topics.join('|') : undefined}
+>
+  <div class="publication-year">{publication.year}</div>
+  <div class="publication-body">
+    <div class="eyebrow-row">
+      <span>{statusLabels[publication.status][lang]}</span>
+      {publication.role && <span>{roleLabels[publication.role][lang]}</span>}
+    </div>
+    <h3>{publication.title}</h3>
+    <p class="authors">{publication.authors.join(', ')}</p>
+    <p class="venue">{publication.venue}</p>
+    {!compact && <div class="tag-row">{publication.topics.map((topic) => <span>{topic}</span>)}</div>}
+    <div class="publication-links">
+      {publication.doi && <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener">DOI ↗</a>}
+      {publication.doi && (
+        <button type="button" data-copy-doi={publication.doi} data-copied-label={lang === 'zh' ? '已复制' : 'Copied'}>
+          {lang === 'zh' ? '复制 DOI' : 'Copy DOI'}
+        </button>
+      )}
+      {publication.url && <a href={publication.url} target="_blank" rel="noopener">{publication.status === 'Preprint' ? 'Preprint ↗' : 'Link ↗'}</a>}
+    </div>
+  </div>
+</article>
+

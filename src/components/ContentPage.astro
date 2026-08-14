@@ -1,0 +1,164 @@
+---
+import type { Section } from '../data/navigation';
+import { honors, profile, projects, publications, researchThemes, service, t, timeline } from '../data/site';
+import type { Lang } from '../data/site';
+import ProjectCard from './ProjectCard.astro';
+import PublicationItem from './PublicationItem.astro';
+
+const { lang, section } = Astro.props as { lang: Lang; section: Section };
+const copy = {
+  about: {
+    label: { zh: '个人介绍', en: 'About' },
+    title: { zh: '理解复杂系统中的人，并让智能真正服务于安全', en: 'Understanding people in complex systems—and making intelligence serve safety' },
+    intro: { zh: '萧星宇，清华大学核能与新能源技术研究院 2023 级直博生，研究数字化核电厂人因失误动态建模与智能防控。', en: 'Xingyu Xiao is a direct-entry PhD student (class of 2023) at Tsinghua University’s Institute of Nuclear and New Energy Technology, studying dynamic human-error modeling and intelligent prevention in digital nuclear power plants.' },
+  },
+  research: {
+    label: { zh: '研究方向', en: 'Research' },
+    title: { zh: '人的可靠性，是高自治系统不可绕开的安全核心', en: 'Human reliability is a safety core that high-autonomy systems cannot bypass' },
+    intro: { zh: '研究围绕一个核心问题展开：当核电系统更数字化、更智能、更自主时，如何理解人的认知与失误，并建立可验证的人机协同安全边界？', en: 'My work centers on one question: as nuclear systems become more digital, intelligent, and autonomous, how can we understand human cognition and error while building verifiable safety boundaries for human–AI collaboration?' },
+  },
+  publications: {
+    label: { zh: '论文与学术成果', en: 'Publications' },
+    title: { zh: '以公开题录连接研究问题、方法与证据', en: 'Connecting research questions, methods, and evidence through public records' },
+    intro: { zh: '以下为从旧站和本地论文材料恢复的 15 条公开成果记录，默认按年份倒序。总论文数以 2026 年 8 月任务资料所述“约 25 篇”为准，完整清单仍需最新版正式 CV 补充。', en: 'Below are 15 public records recovered from the legacy site and local paper material, sorted by year. The August 2026 brief reports approximately 25 papers in total; a current formal CV is still needed to complete the list.' },
+  },
+  projects: {
+    label: { zh: '代表性项目', en: 'Projects' },
+    title: { zh: '把研究方法做成可讨论、可验证的系统原型', en: 'Turning methods into systems that can be discussed and tested' },
+    intro: { zh: '项目页区分论文支持的研究成果、尚在演进的研究原型和旧站归档演示。所有动态后端均已移除。', en: 'Projects distinguish paper-supported research, evolving prototypes, and legacy archived demos. All dynamic backends have been removed.' },
+  },
+  honors: {
+    label: { zh: '荣誉与经历', en: 'Honors & experience' },
+    title: { zh: '认可来自长期积累，也应以可核实记录为准', en: 'Recognition reflects sustained work—and should remain verifiable' },
+    intro: { zh: '仅收录旧站正式 CV 或任务资料能够支持的条目；名称存在冲突的奖项暂不公开。', en: 'Only entries supported by the legacy formal CV or migration brief are included; honors with conflicting names are withheld.' },
+  },
+  service: {
+    label: { zh: '学术服务与公共参与', en: 'Service & engagement' },
+    title: { zh: '让严谨研究进入同行共同体，也进入公共讨论', en: 'Bringing rigorous research into peer communities and public dialogue' },
+    intro: { zh: '学术服务、核科普与青年公共参与共同构成研究之外的责任实践。', en: 'Peer service, nuclear science communication, and youth engagement form a responsibility beyond research itself.' },
+  },
+  contact: {
+    label: { zh: '联系方式', en: 'Contact' },
+    title: { zh: '从一个清晰的问题开始合作', en: 'Start a collaboration with a clear question' },
+    intro: { zh: '欢迎高校教师、科研团队、能源行业与国际青年网络就公开研究方向联系。请勿通过本页面发送敏感运行数据或未公开材料。', en: 'Faculty, research groups, energy-industry teams, and international youth networks are welcome to reach out about public research themes. Please do not send sensitive operational data or unpublished material.' },
+  },
+} as const;
+const hero = copy[section];
+const years = [...new Set(publications.map((item) => item.year))].sort((a, b) => b - a);
+const publicationTopics = [...new Set(publications.flatMap((item) => item.topics))].sort();
+const projectTopics = [...new Set(projects.flatMap((item) => item.topics))].sort();
+const projectStatuses = [...new Set(projects.map((item) => item.status))];
+---
+
+<header class="page-hero section-shell">
+  <p class="kicker"><span></span>{t(hero.label, lang)}</p>
+  <h1>{t(hero.title, lang)}</h1>
+  <p>{t(hero.intro, lang)}</p>
+</header>
+
+{section === 'about' && (
+  <div class="page-content section-shell about-layout">
+    <article class="prose lead-prose">
+      <h2>{lang === 'zh' ? '研究者简介' : 'Researcher profile'}</h2>
+      <p>{t(profile.shortBio, lang)}</p>
+      <p>{lang === 'zh' ? '研究关注核安全、人因可靠性分析、人工智能与认知建模的交叉地带。与其把人工智能视为替代操纵员的单一工具，更重要的问题是：怎样把机器能力嵌入明确的功能分配、人在回路监督和可解释验证框架。' : 'My research sits at the intersection of nuclear safety, human reliability analysis, AI, and cognitive modeling. Rather than treating AI simply as a replacement for operators, I focus on how machine capabilities can be embedded within explicit function allocation, human oversight, and explainable verification.'}</p>
+      <p>{lang === 'zh' ? '当前工作从动态 HEP、界面与操作行为数据、知识图谱智能体和多角色工作负荷等不同尺度，探索下一代核电智能决策与高自治运行的安全基础。' : 'Current work examines the safety foundations of next-generation nuclear decision support and high-autonomy operations across multiple scales—from dynamic HEP and interaction data to knowledge-graph agents and multi-role workload.'}</p>
+      <h2>{lang === 'zh' ? '研究原则' : 'Research principles'}</h2>
+      <ul class="principle-list">
+        <li><strong>01</strong><span>{lang === 'zh' ? '从真实运行问题出发，而不是从模型能力出发。' : 'Start from real operational problems, not model capability.'}</span></li>
+        <li><strong>02</strong><span>{lang === 'zh' ? '让风险判断有证据、有边界、可追溯。' : 'Make risk judgments evidence-based, bounded, and traceable.'}</span></li>
+        <li><strong>03</strong><span>{lang === 'zh' ? '保留人的最终监督与系统级安全责任。' : 'Preserve human oversight and system-level safety accountability.'}</span></li>
+      </ul>
+    </article>
+    <aside class="profile-aside">
+      <picture><source srcset="/images/xingyu-xiao.webp" type="image/webp" /><img src="/images/xingyu-xiao.jpg" width="800" height="1200" loading="lazy" alt={t(profile.name, lang)} /></picture>
+      <dl>
+        <div><dt>{lang === 'zh' ? '身份' : 'Role'}</dt><dd>{t(profile.role, lang)}</dd></div>
+        <div><dt>{lang === 'zh' ? '单位' : 'Institution'}</dt><dd>{t(profile.institution, lang)}</dd></div>
+        <div><dt>Email</dt><dd><a href={`mailto:${profile.email}`}>{profile.email}</a></dd></div>
+      </dl>
+    </aside>
+    <section class="timeline-section">
+      <h2>{lang === 'zh' ? '教育与研究路径' : 'Education & research path'}</h2>
+      <div class="timeline">
+        {timeline.map((item) => <article><time>{lang === 'zh' ? item.period : item.periodEn}</time><div><h3>{t(item.title, lang)}</h3><p>{t(item.detail, lang)}</p></div></article>)}
+      </div>
+    </section>
+  </div>
+)}
+
+{section === 'research' && (
+  <div class="page-content section-shell">
+    <div class="theme-grid research-theme-grid">
+      {researchThemes.map((theme) => <article class="theme-card"><span class="theme-code">{theme.code}</span><h2>{t(theme.title, lang)}</h2><p>{t(theme.description, lang)}</p><div class="tag-row">{theme.tags.map((tag) => <span>{tag}</span>)}</div></article>)}
+    </div>
+    <section class="research-chain">
+      <div class="section-intro"><p class="section-label">{lang === 'zh' ? '方法路径' : 'Method chain'}</p><h2>{lang === 'zh' ? '机制理解 → 数据表征 → 智能辅助 → 安全验证' : 'Mechanism → data → intelligent support → safety verification'}</h2></div>
+      <ol>
+        <li><span>01</span><div><h3>{lang === 'zh' ? '理解人' : 'Understand people'}</h3><p>{lang === 'zh' ? '刻画认知功能、绩效影响因素、团队协作与失误模式。' : 'Model cognitive functions, performance-influencing factors, team coordination, and error modes.'}</p></div></li>
+        <li><span>02</span><div><h3>{lang === 'zh' ? '连接数据' : 'Connect data'}</h3><p>{lang === 'zh' ? '融合运行日志、界面轨迹、时序参数、实验与专家知识。' : 'Integrate operation logs, interaction trajectories, time-series parameters, experiments, and expert knowledge.'}</p></div></li>
+        <li><span>03</span><div><h3>{lang === 'zh' ? '构建支持' : 'Build support'}</h3><p>{lang === 'zh' ? '使用概率模型、知识图谱、大语言模型与多智能体形成风险感知和决策建议。' : 'Use probabilistic models, knowledge graphs, LLMs, and multiple agents for risk awareness and decision guidance.'}</p></div></li>
+        <li><span>04</span><div><h3>{lang === 'zh' ? '验证边界' : 'Verify boundaries'}</h3><p>{lang === 'zh' ? '以可解释性、专家在环、规程一致性和安全约束评估智能系统。' : 'Evaluate intelligent systems through explainability, expert-in-the-loop review, procedural consistency, and safety constraints.'}</p></div></li>
+      </ol>
+    </section>
+  </div>
+)}
+
+{section === 'publications' && (
+  <div class="page-content section-shell">
+    <div class="filter-bar" data-filter-group>
+      <label>{lang === 'zh' ? '年份' : 'Year'}<select data-filter-field="year"><option value="all">{lang === 'zh' ? '全部年份' : 'All years'}</option>{years.map((year) => <option value={year}>{year}</option>)}</select></label>
+      <label>{lang === 'zh' ? '主题' : 'Topic'}<select data-filter-field="topic"><option value="all">{lang === 'zh' ? '全部主题' : 'All topics'}</option>{publicationTopics.map((topic) => <option value={topic}>{topic}</option>)}</select></label>
+    </div>
+    <div class="publication-list">{publications.map((publication) => <PublicationItem publication={publication} lang={lang} />)}</div>
+    <p class="filter-empty" data-filter-empty hidden>{lang === 'zh' ? '没有符合筛选条件的论文。' : 'No publications match these filters.'}</p>
+    <aside class="source-note"><strong>{lang === 'zh' ? '题录说明' : 'Record note'}</strong><p>{lang === 'zh' ? '作者顺序、卷期和 DOI 优先以本地论文首页为准；没有本地全文的记录沿用旧站公开题录。引用次数不在前端动态抓取。' : 'Author order, volume, and DOI follow local paper front matter where available; records without a local paper retain the legacy public citation. Citation counts are not fetched dynamically.'}</p></aside>
+  </div>
+)}
+
+{section === 'projects' && (
+  <div class="page-content section-shell">
+    <div class="filter-bar" data-filter-group>
+      <label>{lang === 'zh' ? '状态' : 'Status'}<select data-filter-field="status"><option value="all">{lang === 'zh' ? '全部状态' : 'All statuses'}</option>{projectStatuses.map((status) => <option value={status}>{status}</option>)}</select></label>
+      <label>{lang === 'zh' ? '主题' : 'Topic'}<select data-filter-field="topic"><option value="all">{lang === 'zh' ? '全部主题' : 'All topics'}</option>{projectTopics.map((topic) => <option value={topic}>{topic}</option>)}</select></label>
+    </div>
+    <div class="project-grid all-projects">{projects.map((project) => <ProjectCard project={project} lang={lang} filtered />)}</div>
+    <p class="filter-empty" data-filter-empty hidden>{lang === 'zh' ? '没有符合筛选条件的项目。' : 'No projects match these filters.'}</p>
+  </div>
+)}
+
+{section === 'honors' && (
+  <div class="page-content section-shell honors-layout">
+    <section>
+      <h2>{lang === 'zh' ? '学术认可' : 'Academic recognition'}</h2>
+      <ol class="honor-list">{honors.map((item) => <li><span>{item.year}</span><div><h3>{t(item.title, lang)}</h3><p>{t(item.note, lang)}</p></div></li>)}</ol>
+    </section>
+    <aside class="verification-note"><p class="section-label">{lang === 'zh' ? '资料边界' : 'Evidence boundary'}</p><h2>{lang === 'zh' ? '谨慎比完整更重要' : 'Caution matters more than completeness'}</h2><p>{lang === 'zh' ? '任务资料还提到清苗学者、核能院士奖学金、综合一等奖学金等经历，但旧站材料存在名称差异或缺少正式记录，因此未在此页面发布。待最新 CV 核实后再更新。' : 'The migration brief also mentions Qingmiao Scholar, a nuclear-energy academician scholarship, and a comprehensive first-class scholarship. Because names conflict or formal records are absent in the local source, they are withheld until a current CV confirms them.'}</p></aside>
+  </div>
+)}
+
+{section === 'service' && (
+  <div class="page-content section-shell service-layout">
+    <div class="service-list">{service.map((item, index) => <article><span>0{index + 1}</span><div><h2>{t(item.title, lang)}</h2><p>{t(item.detail, lang)}</p></div></article>)}</div>
+    <aside class="wechat-card"><img src="/images/human-mind-wechat.jpg" alt={lang === 'zh' ? '“人类心智研究”微信公众号二维码' : 'QR code for the Human Mind Research WeChat channel'} width="430" height="430" loading="lazy" /><div><p class="section-label">WeChat</p><h2>{lang === 'zh' ? '人类心智研究' : 'Human Mind Research'}</h2><p>{lang === 'zh' ? '扫码查看公开内容。二维码来自旧站公开页面。' : 'Scan to view public content. This QR image was already public on the legacy site.'}</p></div></aside>
+  </div>
+)}
+
+{section === 'contact' && (
+  <div class="page-content section-shell contact-layout">
+    <section class="contact-primary">
+      <p class="section-label">Email</p>
+      <a class="email-display" href={`mailto:${profile.email}`}>{profile.email}</a>
+      <button class="button button-secondary" type="button" data-copy-email={profile.email} data-copied-label={lang === 'zh' ? '邮箱已复制' : 'Email copied'}>{lang === 'zh' ? '复制邮箱' : 'Copy email'}</button>
+      <p>{lang === 'zh' ? '建议在邮件中简要说明研究问题、合作背景和希望讨论的下一步。' : 'A helpful first message briefly explains the research question, collaboration context, and desired next step.'}</p>
+    </section>
+    <section class="contact-links">
+      <h2>{lang === 'zh' ? '公开学术主页' : 'Public profiles'}</h2>
+      <a href={profile.links.scholar} target="_blank" rel="me noopener"><span>Google Scholar</span><strong>Publications ↗</strong></a>
+      <a href={profile.links.github} target="_blank" rel="me noopener"><span>GitHub</span><strong>Code & data ↗</strong></a>
+      <a href={profile.links.researchGate} target="_blank" rel="me noopener"><span>ResearchGate</span><strong>Research profile ↗</strong></a>
+      <a href={profile.links.linkedIn} target="_blank" rel="me noopener"><span>LinkedIn</span><strong>Professional profile ↗</strong></a>
+    </section>
+    <aside class="contact-boundary"><strong>{lang === 'zh' ? '隐私与安全' : 'Privacy & safety'}</strong><p>{lang === 'zh' ? '本站没有联系表单、后台数据库或访客分析。邮件将由你的邮件客户端直接发送。请勿分享受限核设施信息、个人数据或模型密钥。' : 'This site has no contact form, backend database, or visitor analytics. Email opens in your own mail client. Do not share restricted facility information, personal data, or model credentials.'}</p></aside>
+  </div>
+)}

@@ -1,0 +1,185 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { alternatePath } from '../data/navigation';
+import { profile } from '../data/site';
+import type { Lang } from '../data/site';
+import '../styles/global.css';
+
+type Props = {
+  lang: Lang;
+  title: string;
+  description: string;
+  section?: string;
+  home?: boolean;
+};
+
+const { lang, title, description, section, home = false } = Astro.props;
+const siteUrl = 'https://www.xiaoxingyu2001.com';
+const pathname = Astro.url.pathname.endsWith('/') || Astro.url.pathname.endsWith('.html')
+  ? Astro.url.pathname
+  : `${Astro.url.pathname}/`;
+const canonical = new URL(pathname, siteUrl).toString();
+const alternate = alternatePath(lang, pathname);
+const zhPath = lang === 'zh' ? pathname : alternate;
+const enPath = lang === 'en' ? pathname : alternate;
+const fullTitle = home ? title : `${title} | ${lang === 'zh' ? '萧星宇' : 'Xingyu Xiao'}`;
+const hasAlternates = home || Boolean(section);
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Xingyu Xiao',
+  alternateName: '萧星宇',
+  url: siteUrl,
+  email: `mailto:${profile.email}`,
+  affiliation: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Tsinghua University',
+    url: 'https://www.tsinghua.edu.cn/en/',
+  },
+  sameAs: [profile.links.github, profile.links.scholar, profile.links.researchGate, profile.links.linkedIn],
+  knowsAbout: [
+    'Human reliability analysis',
+    'Human factors engineering',
+    'Nuclear safety',
+    'Artificial intelligence',
+    'Digital main control rooms',
+  ],
+};
+
+const breadcrumbJsonLd = !home && section
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: lang === 'zh' ? '首页' : 'Home', item: `${siteUrl}${lang === 'en' ? '/en/' : '/'}` },
+        { '@type': 'ListItem', position: 2, name: title, item: canonical },
+      ],
+    }
+  : undefined;
+---
+
+<!doctype html>
+<html lang={lang === 'zh' ? 'zh-CN' : 'en'}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Xingyu Xiao" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#082b3a" />
+    <link rel="canonical" href={canonical} />
+    {hasAlternates && <link rel="alternate" hreflang="zh-CN" href={`${siteUrl}${zhPath}`} />}
+    {hasAlternates && <link rel="alternate" hreflang="en" href={`${siteUrl}${enPath}`} />}
+    {hasAlternates && <link rel="alternate" hreflang="x-default" href={`${siteUrl}${zhPath}`} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Xingyu Xiao · 萧星宇" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={lang === 'zh' ? 'zh_CN' : 'en_US'} />
+    <meta property="og:image" content={`${siteUrl}/og.png`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Xingyu Xiao — Nuclear Human Reliability and AI for Nuclear Safety" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}/og.png`} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
+    {breadcrumbJsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />}
+    <script is:inline>
+      (() => {
+        const saved = localStorage.getItem('theme');
+        const dark = saved === 'dark' || (!saved && matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">{lang === 'zh' ? '跳到正文' : 'Skip to content'}</a>
+    <Header lang={lang} pathname={hasAlternates ? pathname : '/'} section={section} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const requestedLanguage = params.get('lang');
+      const currentPath = window.location.pathname;
+
+      if (currentPath.endsWith('/index_zh.html')) {
+        window.location.replace(`${currentPath.replace(/index_zh\.html$/, '')}${window.location.hash}`);
+      } else if (requestedLanguage === 'en' && !currentPath.startsWith('/en/')) {
+        const target = currentPath === '/' ? '/en/' : `/en${currentPath.endsWith('/') ? currentPath : `${currentPath}/`}`;
+        window.location.replace(`${target}${window.location.hash}`);
+      } else if (requestedLanguage === 'zh' && currentPath.startsWith('/en/')) {
+        window.location.replace(`${currentPath.replace(/^\/en/, '') || '/'}${window.location.hash}`);
+      }
+
+      const menuButton = document.querySelector<HTMLButtonElement>('[data-menu-button]');
+      const navigation = document.querySelector<HTMLElement>('[data-navigation]');
+      menuButton?.addEventListener('click', () => {
+        const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+        menuButton.setAttribute('aria-expanded', String(!isOpen));
+        navigation?.toggleAttribute('data-open', !isOpen);
+      });
+
+      document.querySelectorAll<HTMLAnchorElement>('[data-language-choice]').forEach((link) => {
+        link.addEventListener('click', () => localStorage.setItem('language', link.dataset.languageChoice || 'zh'));
+      });
+
+      const themeButton = document.querySelector<HTMLButtonElement>('[data-theme-button]');
+      themeButton?.addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem('theme', next);
+      });
+
+      const filterGroup = document.querySelector<HTMLElement>('[data-filter-group]');
+      if (filterGroup) {
+        const inputs = filterGroup.querySelectorAll<HTMLSelectElement>('select');
+        const items = document.querySelectorAll<HTMLElement>('[data-filter-item]');
+        const empty = document.querySelector<HTMLElement>('[data-filter-empty]');
+        const applyFilters = () => {
+          let shown = 0;
+          items.forEach((item) => {
+            const matches = Array.from(inputs).every((input) => {
+              const field = input.dataset.filterField;
+              const value = input.value;
+              return value === 'all' || (field && item.dataset[field]?.split('|').includes(value));
+            });
+            item.hidden = !matches;
+            if (matches) shown += 1;
+          });
+          if (empty) empty.hidden = shown > 0;
+        };
+        inputs.forEach((input) => input.addEventListener('change', applyFilters));
+      }
+
+      document.querySelectorAll<HTMLButtonElement>('[data-copy-doi]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const doi = button.dataset.copyDoi;
+          if (!doi) return;
+          await navigator.clipboard.writeText(doi);
+          const original = button.textContent;
+          button.textContent = button.dataset.copiedLabel || 'Copied';
+          setTimeout(() => { button.textContent = original; }, 1600);
+        });
+      });
+
+      document.querySelector<HTMLButtonElement>('[data-copy-email]')?.addEventListener('click', async (event) => {
+        const button = event.currentTarget as HTMLButtonElement;
+        const email = button.dataset.copyEmail;
+        if (!email) return;
+        await navigator.clipboard.writeText(email);
+        button.textContent = button.dataset.copiedLabel || 'Copied';
+      });
+    </script>
+  </body>
+</html>

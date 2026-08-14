@@ -1,0 +1,33 @@
+---
+import { localizedPath } from '../data/navigation';
+import { statusLabel, t } from '../data/site';
+import type { Lang, Project } from '../data/site';
+
+const { lang, project } = Astro.props as { lang: Lang; project: Project };
+---
+
+<article class="project-detail section-shell">
+  <a class="back-link" href={localizedPath(lang, 'projects')}>← {lang === 'zh' ? '返回项目' : 'Back to projects'}</a>
+  <header>
+    <div class="project-detail-meta"><span>{statusLabel(project.status, lang)}</span><span>{project.year}</span></div>
+    <p class="project-acronym">{project.name}</p>
+    <h1>{t(project.fullName, lang)}</h1>
+    <p>{t(project.summary, lang)}</p>
+  </header>
+  <div class="project-detail-grid">
+    <section><span>01</span><h2>{lang === 'zh' ? '研究问题' : 'Problem'}</h2><p>{t(project.problem, lang)}</p></section>
+    <section><span>02</span><h2>{lang === 'zh' ? '方法框架' : 'Method'}</h2><p>{t(project.method, lang)}</p></section>
+    <section><span>03</span><h2>{lang === 'zh' ? '代表性结果' : 'Representative result'}</h2><p>{t(project.result, lang)}</p></section>
+    <section><span>04</span><h2>{lang === 'zh' ? '个人贡献' : 'Contribution'}</h2><p>{t(project.contribution, lang)}</p></section>
+  </div>
+  <aside class="project-evidence">
+    <div><p class="section-label">{lang === 'zh' ? '证据与状态' : 'Evidence & status'}</p><p>{lang === 'zh' ? '页面描述来自本地旧站资料和论文首页。结果只对应文中评估情景，不代表已在核电厂大规模工程部署。' : 'This description is based on local legacy material and paper front matter. Reported results apply to evaluated scenarios and do not imply large-scale deployment in operating plants.'}</p></div>
+    <div class="project-actions">
+      {project.doi && <a class="button button-primary" href={`https://doi.org/${project.doi}`} target="_blank" rel="noopener">DOI ↗</a>}
+      {project.externalUrl && <a class="button button-secondary" href={project.externalUrl} target="_blank" rel="noopener">{lang === 'zh' ? '公开资料' : 'Public resource'} ↗</a>}
+      {!project.doi && !project.externalUrl && <span class="unavailable">{lang === 'zh' ? '交互式演示当前不可用' : 'Interactive demo currently unavailable'}</span>}
+    </div>
+  </aside>
+  <div class="tag-row detail-tags">{project.topics.map((topic) => <span>{topic}</span>)}</div>
+</article>
+

@@ -1,0 +1,32 @@
+import type { UiDictionary } from './zh';
+
+export const en = {
+  lang: 'en',
+  languageName: 'English',
+  languageSwitch: '中文',
+  skip: 'Skip to content',
+  siteName: 'Xingyu Xiao',
+  nav: {
+    home: 'Home',
+    about: 'About',
+    research: 'Research',
+    publications: 'Publications',
+    projects: 'Projects',
+    honors: 'Honors',
+    service: 'Service',
+    contact: 'Contact',
+  },
+  theme: 'Toggle dark or light theme',
+  menu: 'Open navigation menu',
+  closeMenu: 'Close navigation menu',
+  updated: 'Updated August 2026',
+  privacy: 'No cookies or visitor tracking are used.',
+  source: 'Site source',
+  readMore: 'Learn more',
+  viewAll: 'View all',
+  doi: 'DOI',
+  copyDoi: 'Copy DOI',
+  copied: 'Copied',
+  filterAll: 'All',
+} satisfies UiDictionary;
+

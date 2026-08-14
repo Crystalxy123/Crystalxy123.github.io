@@ -1,5 +1,6 @@
 # Dependencies and build output
 node_modules/
+.venv/
 dist/
 .astro/
 .cache/
@@ -30,4 +31,3 @@ credentials*
 # The 3.3 GB legacy workspace is retained locally for reference only. It contains
 # nested repositories, build outputs, environments, research data, and secrets.
 /academic-website/
-

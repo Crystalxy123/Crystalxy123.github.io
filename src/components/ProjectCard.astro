@@ -1,0 +1,26 @@
+---
+import { localizedPath } from '../data/navigation';
+import { statusLabel, t } from '../data/site';
+import type { Lang, Project } from '../data/site';
+
+const { project, lang, filtered = false } = Astro.props as { project: Project; lang: Lang; filtered?: boolean };
+---
+
+<article
+  class="project-card"
+  data-filter-item={filtered ? '' : undefined}
+  data-status={filtered ? project.status : undefined}
+  data-topic={filtered ? project.topics.join('|') : undefined}
+>
+  <div class="project-card-top">
+    <span class="project-index">{project.name}</span>
+    <span class="status-pill">{statusLabel(project.status, lang)}</span>
+  </div>
+  <h3>{t(project.fullName, lang)}</h3>
+  <p>{t(project.summary, lang)}</p>
+  <div class="tag-row">{project.topics.map((topic) => <span>{topic}</span>)}</div>
+  <a class="card-link" href={localizedPath(lang, `projects/${project.slug}`)}>
+    {lang === 'zh' ? '查看研究脉络' : 'Explore the research'} <span aria-hidden="true">→</span>
+  </a>
+</article>
+
