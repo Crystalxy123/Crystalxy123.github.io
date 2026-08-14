@@ -1,0 +1,15 @@
+---
+import ProjectDetail from '../../components/ProjectDetail.astro';
+import { projects, t } from '../../data/site';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({ params: { slug: project.slug }, props: { project } }));
+}
+
+const { project } = Astro.props;
+---
+<BaseLayout lang="zh" title={`${project.name} · ${t(project.fullName, 'zh')}`} description={t(project.summary, 'zh')} section="projects">
+  <ProjectDetail lang="zh" project={project} />
+</BaseLayout>
+

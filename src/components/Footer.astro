@@ -1,0 +1,30 @@
+---
+import { localizedPath } from '../data/navigation';
+import { profile } from '../data/site';
+import type { Lang } from '../data/site';
+import { en } from '../i18n/en';
+import { zh } from '../i18n/zh';
+
+const { lang } = Astro.props as { lang: Lang };
+const ui = lang === 'zh' ? zh : en;
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <strong>{lang === 'zh' ? '萧星宇 · Xingyu Xiao' : 'Xingyu Xiao · 萧星宇'}</strong>
+      <p>{ui.updated} · {ui.privacy}</p>
+    </div>
+    <nav aria-label={lang === 'zh' ? '页脚链接' : 'Footer links'}>
+      <a href={`mailto:${profile.email}`}>Email</a>
+      <a href={profile.links.scholar} rel="me noopener" target="_blank">Google Scholar</a>
+      <a href={profile.links.github} rel="me noopener" target="_blank">GitHub</a>
+      <a href={localizedPath(lang, 'contact')}>{lang === 'zh' ? '联系' : 'Contact'}</a>
+    </nav>
+  </div>
+  <div class="footer-rule">
+    <span>© 2026 Xingyu Xiao</span>
+    <a href="https://github.com/Crystalxy123/Crystalxy123.github.io" rel="noopener" target="_blank">{ui.source}</a>
+  </div>
+</footer>
+

@@ -1,0 +1,39 @@
+---
+import { alternatePath, localizedPath, sections } from '../data/navigation';
+import type { Lang } from '../data/site';
+import { en } from '../i18n/en';
+import { zh } from '../i18n/zh';
+
+type Props = { lang: Lang; pathname: string; section?: string };
+const { lang, pathname, section } = Astro.props;
+const ui = lang === 'zh' ? zh : en;
+const languageTarget = alternatePath(lang, pathname);
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="wordmark" href={localizedPath(lang)}>
+      <span class="wordmark-mark" aria-hidden="true">XX</span>
+      <span class="wordmark-text">
+        <strong>{ui.siteName}</strong>
+        <small>{lang === 'zh' ? 'Xingyu Xiao' : '萧星宇'}</small>
+      </span>
+    </a>
+    <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="primary-navigation" aria-label={ui.menu}>
+      <span></span><span></span>
+    </button>
+    <nav id="primary-navigation" class="primary-navigation" data-navigation aria-label={lang === 'zh' ? '主导航' : 'Primary navigation'}>
+      <a href={localizedPath(lang)} aria-current={!section ? 'page' : undefined}>{ui.nav.home}</a>
+      {sections.map((item) => (
+        <a href={localizedPath(lang, item)} aria-current={section === item ? 'page' : undefined}>{ui.nav[item]}</a>
+      ))}
+      <div class="nav-tools">
+        <a class="language-link" href={languageTarget} data-language-choice={lang === 'zh' ? 'en' : 'zh'}>{ui.languageSwitch}</a>
+        <button class="theme-button" type="button" data-theme-button aria-label={ui.theme} title={ui.theme}>
+          <span class="theme-sun" aria-hidden="true">☼</span>
+          <span class="theme-moon" aria-hidden="true">◐</span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>

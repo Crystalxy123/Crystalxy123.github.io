@@ -1,0 +1,25 @@
+---
+import ContentPage from '../components/ContentPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { sections } from '../data/navigation';
+import type { Section } from '../data/navigation';
+
+export function getStaticPaths() {
+  return sections.map((section) => ({ params: { section }, props: { section } }));
+}
+
+const { section } = Astro.props as { section: Section };
+const meta = {
+  about: ['关于萧星宇', '萧星宇的教育、研究定位与核电人因可靠性学术路径。'],
+  research: ['研究方向', '核电人因可靠性、数字化主控室、人工智能决策支持与高自治运行研究。'],
+  publications: ['论文与学术成果', '萧星宇公开发表论文、会议论文和预印本题录。'],
+  projects: ['代表性项目', 'DRIF、KRAIL、AutoGraph、WELLA、InSight-R 等研究项目。'],
+  honors: ['荣誉与经历', '萧星宇经本地正式资料核实的学术荣誉与教育经历。'],
+  service: ['学术服务与公共参与', '同行评审、核科普、学术传播与公共参与。'],
+  contact: ['联系萧星宇', '通过公开学术邮箱和学术主页联系萧星宇。'],
+} as const;
+---
+<BaseLayout lang="zh" title={meta[section][0]} description={meta[section][1]} section={section}>
+  <ContentPage lang="zh" section={section} />
+</BaseLayout>
+

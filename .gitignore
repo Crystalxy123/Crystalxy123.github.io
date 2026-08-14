@@ -1,13 +1,33 @@
-# Ignore the contents of the _site directory and other cache directories
-_site/
-.sass-cache/
+# Dependencies and build output
+node_modules/
+.venv/
+dist/
+.astro/
+.cache/
+coverage/
 
-# Ignore the directory for local files during development
-local/
+# Local previews and test artifacts
+artifacts/
+playwright-report/
+test-results/
 
-# Ignore the Gemfile that is generated
-Gemfile.lock
+# Environment files and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.key
+id_rsa*
+credentials*
 
-# Ingore files created by npm
-node_modules
-package-lock.json
+# Editor and operating-system files
+.DS_Store
+._*
+.idea/
+.vscode/
+*.log
+
+# The 3.3 GB legacy workspace is retained locally for reference only. It contains
+# nested repositories, build outputs, environments, research data, and secrets.
+/academic-website/

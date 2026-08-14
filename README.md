@@ -1,89 +1,135 @@
-# Academic Pages
-**Academic Pages is a GitHub Pages template for personal and professional portfolio-oriented websites.**
+# Xingyu Xiao — academic website
 
-![Academic Pages template example](images/homepage.png "Academic Pages template example")
+Bilingual academic portfolio for 萧星宇 / Xingyu Xiao, focused on nuclear human reliability, digital main control rooms, intelligent decision support, and high-autonomy nuclear operations.
 
-# Getting Started
+- Canonical URL: `https://www.xiaoxingyu2001.com`
+- Chinese site: `/`
+- English site: `/en/`
+- Hosting: GitHub Pages through GitHub Actions
+- Runtime services: none
 
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Click the "Use this template" button in the top right.
-1. On the "New repository" page, enter your repository name as "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and add your content.
-1. Upload any files (like PDFs, .zip files, etc.) to the `files/` directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.
-1. Check status by going to the repository settings, in the "GitHub pages" section
-1. (Optional) Use the Jupyter notebooks or python scripts in the `markdown_generator` folder to generate markdown files for publications and talks from a TSV file.
+## Technology
 
-See more info at https://academicpages.github.io/
+- Astro with fully static output
+- TypeScript with strict checking
+- CSS custom properties and system fonts
+- Small progressive-enhancement script for language compatibility, filtering, DOI copying, mobile navigation, and theme preference
+- GitHub Actions using the official Pages actions
 
-## Running locally
+The generated `dist/` directory contains ordinary HTML, CSS, JavaScript, images, metadata, and redirect files. The site does not require Node, Python, a database, a private server, or an API key after deployment.
 
-When you are initially working on your website, it is very useful to be able to preview the changes locally before pushing them to GitHub. To work locally you will need to:
+## Local development
 
-1. Clone the repository and made updates as detailed above.
-1. Make sure you have ruby-dev, bundler, and nodejs installed
-    
-    On most Linux distribution and [Windows Subsystem Linux](https://learn.microsoft.com/en-us/windows/wsl/about) the command is:
-    ```bash
-    sudo apt install ruby-dev ruby-bundler nodejs
-    ```
-    If you see error `Unable to locate package ruby-bundler`, `Unable to locate package nodejs `, run the following:
-    ```bash
-    sudo apt update && sudo apt upgrade -y
-    ```
-    then try run `sudo apt install ruby-dev ruby-bundler nodejs` again.
-
-    On MacOS the commands are:
-    ```bash
-    brew install ruby
-    brew install node
-    gem install bundler
-    ```
-1. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
-
-    If you see file permission error like `Fetching bundler-2.6.3.gem ERROR:  While executing gem (Gem::FilePermissionError) You don't have write permissions for the /var/lib/gems/3.2.0 directory.` or `Bundler::PermissionError: There was an error while trying to write to /usr/local/bin.`
-    Install Gems Locally (Recommended):
-    ```bash
-    bundle config set --local path 'vendor/bundle'
-    ```
-    then try run `bundle install` again. If succeeded, you should see a folder called `vendor` and open `.gitignore` then add `vendor` inside it.
-
-1. Run `jekyll serve -l -H localhost` to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change.
-    You may also try `bundle exec jekyll serve -l -H localhost` to ensure jekyll to use specific dependencies on your own local machine.
-
-If you are running on Linux it may be necessary to install some additional dependencies prior to being able to run locally: `sudo apt install build-essential gcc make`
-
-## Using Docker
-
-Working from a different OS, or just want to avoid installing dependencies? You can use the provided `Dockerfile` to build a container that will run the site for you if you have [Docker](https://www.docker.com/) installed.
-
-You can build and execute the container by running the following command in the repository:
+Requirements: Node.js 20.19 or newer and npm.
 
 ```bash
-docker compose up
+npm install
+npm run dev
 ```
 
-You should now be able to access the website from `localhost:4000`.
+Astro prints the local preview address. Open that address in a browser.
 
-# Maintenance
+## Quality and build commands
 
-Bug reports and feature requests to the template should be [submitted via GitHub](https://github.com/academicpages/academicpages.github.io/issues/new/choose). For questions concerning how to style the template, please feel free to start a [new discussion on GitHub](https://github.com/academicpages/academicpages.github.io/discussions).
+```bash
+npm run lint
+npm run typecheck
+npm run build
+npm run verify:build
+npm run check
+npm run preview
+```
 
-This repository was forked (then detached) by [Stuart Geiger](https://github.com/staeiou) from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License (see LICENSE.md). It is currently being maintained by [Robert Zupko](https://github.com/rjzupkoii) and additional maintainers would be welcomed.
+`npm run check` is the release gate. It lints, type-checks, builds, validates internal links and metadata, checks required routes, and scans generated files for prohibited server references.
 
-## Bugfixes and enhancements
+## Project structure
 
-If you have bugfixes and enhancements that you would like to submit as a pull request, you will need to [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) this repository as opposed to using it as a template. This will also allow you to [synchronize your copy](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) of template to your fork as well.
+```text
+src/
+  components/       Page sections and reusable cards
+  data/             Profile, publications, projects, honors, service
+  i18n/             Shared Chinese and English interface text
+  layouts/          SEO, structured data, navigation, global behavior
+  pages/            Static Chinese, English, project, and 404 routes
+  styles/           Design system and responsive layout
+public/
+  images/           Optimized public portrait and WeChat image
+  projects/         Legacy static redirect entries
+  CNAME             Canonical custom domain
+  robots.txt
+  sitemap.xml
+scripts/
+  check-build.mjs   Generated-site validation
+.github/workflows/
+  deploy-pages.yml  CI and GitHub Pages deployment
+```
 
-Unfortunately, one logistical issue with a template theme like Academic Pages that makes it a little tricky to get bug fixes and updates to the core theme. If you use this template and customize it, you will probably get merge conflicts if you attempt to synchronize. If you want to save your various .yml configuration files and markdown files, you can delete the repository and fork it again. Or you can manually patch.
+The original 3.3 GB mixed workspace remains under `academic-website/` on the local machine and is intentionally ignored. It contains secrets, nested repositories, research data, full-text papers, build products, and backend services and must never be staged.
 
----
-<div align="center">
-    
-![pages-build-deployment](https://github.com/academicpages/academicpages.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)
-[![GitHub contributors](https://img.shields.io/github/contributors/academicpages/academicpages.github.io.svg)](https://github.com/academicpages/academicpages.github.io/graphs/contributors)
-[![GitHub release](https://img.shields.io/github/v/release/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/releases/latest)
-[![GitHub license](https://img.shields.io/github/license/academicpages/academicpages.github.io?color=blue)](https://github.com/academicpages/academicpages.github.io/blob/master/LICENSE)
+## Updating the biography
 
-[![GitHub stars](https://img.shields.io/github/stars/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io)
-[![GitHub forks](https://img.shields.io/github/forks/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/fork)
-</div>
+Edit `profile.shortBio`, `profile.role`, and the relevant copy in `src/data/site.ts`. Each public statement has separate `zh` and `en` text. Run `npm run check` before publishing.
+
+## Updating statistics
+
+Edit `profile.stats` in `src/data/site.ts`. Keep the visible date note accurate, use approximate signs for estimates, and reconcile figures against the newest formal CV.
+
+## Adding a publication
+
+Add one typed record to `publications` in `src/data/site.ts`. Required fields include title, full author order, venue, year, status, and topics. Add a DOI only after verifying it on the publisher page or the paper front matter. Do not add live citation counts or redistribute a publisher PDF without permission.
+
+## Adding a project
+
+Add a record to `projects` in `src/data/site.ts`. The static Chinese and English detail pages are generated automatically. State whether the item is published research, a research prototype, an archived demo, or a published dataset. Do not imply deployment or individual ownership of team results without evidence.
+
+## Replacing the portrait
+
+Replace both:
+
+- `public/images/xingyu-xiao.jpg`
+- `public/images/xingyu-xiao.webp`
+
+Keep a 2:3 aspect ratio, remove private metadata if present, and preserve the width/height used by the page to avoid layout shift. Update `public/apple-touch-icon.png` if desired.
+
+## Updating the CV
+
+No public CV PDF is included because no current, privacy-reviewed formal PDF was found in the supplied directory. When one is available:
+
+1. remove private phone numbers, addresses, IDs, private plans, and restricted research;
+2. save it as `public/cv/xingyu-xiao-cv.pdf`;
+3. add a download link only after checking the final PDF visually;
+4. update `src/data/site.ts` and the August 2026 statistics note where needed.
+
+## Bilingual content
+
+The Chinese site is the default. English routes are generated under `/en/`. Shared interface labels live in `src/i18n/`; substantive Chinese and English profile text lives together in `src/data/site.ts` to make mismatches visible during review.
+
+Legacy `?lang=zh` and `?lang=en` links are handled in the browser and redirect to the equivalent static route. The selected language and theme are stored only on the visitor's device.
+
+## GitHub Pages deployment
+
+Every pull request runs lint, type-check, build, and generated-site validation. A push to `main` or the existing repository's current `master` default branch, or a manual workflow dispatch, additionally uploads `dist/` and deploys through the `github-pages` environment.
+
+The existing public repository is `Crystalxy123/Crystalxy123.github.io`. Its historical Jekyll site remains on `master`; this migration is published through `codex/github-pages-migration` and reviewed in a pull request so the old commit history is not overwritten.
+
+Repository Settings → Pages must use **GitHub Actions** as the source. The custom domain must be registered as `www.xiaoxingyu2001.com`. See `DNS_MIGRATION.md` before changing DNS.
+
+## Common issues
+
+- **A deep link returns 404:** confirm the page exists in `dist/<route>/index.html` and that the repository is using Actions deployment.
+- **CSS or images are missing:** this is a user-site build and assets use root-relative URLs. Do not add a repository subpath to Astro's base configuration.
+- **The custom domain warns about DNS:** remove conflicting `www` A/AAAA records, create the required CNAME, wait for propagation, then re-check Pages settings.
+- **The old interactive tool no longer runs:** GitHub Pages has no Python or Node backend. Preserve it as an archived description or migrate the computation to a fully browser-only implementation.
+- **A publication count differs:** update the typed data only after checking the newest formal CV and public publication records.
+
+## Documentation
+
+- `MIGRATION_AUDIT.md`: legacy inventory and adopted route
+- `LEGACY_URL_MIGRATION.md`: old-to-new URL mapping
+- `DNS_MIGRATION.md`: exact DNS change and rollback procedure
+- `SECURITY_CHECK.md`: release security boundary and scan results
+- `CONTENT_UPDATE_GUIDE.md`: nontechnical content-maintenance guide
+
+## License
+
+Source code is available under the MIT License in `LICENSE`. Personal photographs, biography, publication metadata, and research content remain © Xingyu Xiao unless their original source states otherwise. Third-party paper titles and venue names are used as bibliographic facts; no publisher PDF is redistributed by this repository.
