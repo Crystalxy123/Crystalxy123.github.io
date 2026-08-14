@@ -1,7 +1,7 @@
 # DNS migration to GitHub Pages
 
 Canonical domain: `www.xiaoxingyu2001.com`  
-Expected user-site target after GitHub authentication: `Crystalxy123.github.io`  
+Confirmed user-site target: `Crystalxy123.github.io`  
 Check date: 2026-08-14 (Asia/Shanghai)
 
 Do not change DNS until the default GitHub Pages URL is deployed and its main and deep bilingual routes have been tested.
@@ -106,7 +106,7 @@ Never mix the old-server A record and the GitHub Pages A records at the same hos
 
 Keep the old server available until all of these have remained true for at least 48 hours:
 
-- the Pages workflow is green on `main`;
+- the Pages workflow is green on the repository's deployed default branch (`master` during migration, or `main` after an optional default-branch rename);
 - the default `Crystalxy123.github.io` site works;
 - both custom-domain variants resolve as intended;
 - GitHub Pages shows the custom domain as valid and Enforce HTTPS is on;
@@ -114,4 +114,3 @@ Keep the old server available until all of these have remained true for at least
 - search, profile, and shared links no longer contain a port-8888 address.
 
 The old `:8888` URLs will stop working permanently after shutdown. DNS cannot redirect a URL that explicitly requests a closed port.
-

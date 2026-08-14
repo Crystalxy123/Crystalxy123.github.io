@@ -108,7 +108,9 @@ Legacy `?lang=zh` and `?lang=en` links are handled in the browser and redirect t
 
 ## GitHub Pages deployment
 
-Every pull request runs lint, type-check, build, and generated-site validation. A push to `main`, or a manual workflow dispatch, additionally uploads `dist/` and deploys through the `github-pages` environment.
+Every pull request runs lint, type-check, build, and generated-site validation. A push to `main` or the existing repository's current `master` default branch, or a manual workflow dispatch, additionally uploads `dist/` and deploys through the `github-pages` environment.
+
+The existing public repository is `Crystalxy123/Crystalxy123.github.io`. Its historical Jekyll site remains on `master`; this migration is published through `codex/github-pages-migration` and reviewed in a pull request so the old commit history is not overwritten.
 
 Repository Settings → Pages must use **GitHub Actions** as the source. The custom domain must be registered as `www.xiaoxingyu2001.com`. See `DNS_MIGRATION.md` before changing DNS.
 
@@ -131,4 +133,3 @@ Repository Settings → Pages must use **GitHub Actions** as the source. The cus
 ## License
 
 Source code is available under the MIT License in `LICENSE`. Personal photographs, biography, publication metadata, and research content remain © Xingyu Xiao unless their original source states otherwise. Third-party paper titles and venue names are used as bibliographic facts; no publisher PDF is redistributed by this repository.
-
