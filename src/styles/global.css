@@ -1,17 +1,17 @@
 :root {
-  --bg: #f8f8f6;
-  --surface: #ffffff;
-  --surface-strong: #ffffff;
-  --ink: #17191a;
-  --ink-soft: #666b6e;
-  --line: #dcddda;
-  --line-strong: #a2a6a8;
-  --navy: #20262a;
-  --navy-2: #30383d;
-  --green: #3e4a51;
-  --green-bright: #273138;
-  --lime: #e8ecee;
-  --mist: #f0f1ef;
+  --bg: #f7f3ed;
+  --surface: #fbf8f4;
+  --surface-strong: #fffdf9;
+  --ink: #2c2b29;
+  --ink-soft: #6a6560;
+  --line: #d4cec7;
+  --line-strong: #a9a29b;
+  --navy: #2b2a28;
+  --navy-2: #3a3734;
+  --green: #625b55;
+  --green-bright: #3b3632;
+  --lime: #eee6dd;
+  --mist: #f0ebe5;
   --shadow: 0 12px 32px rgb(0 0 0 / 8%);
   --radius: 2px;
   --radius-lg: 2px;
@@ -21,19 +21,19 @@
 }
 
 :root[data-theme='dark'] {
-  --bg: #111315;
-  --surface: #181b1d;
-  --surface-strong: #202427;
-  --ink: #f1f2f2;
-  --ink-soft: #adb2b5;
-  --line: #353a3d;
-  --line-strong: #697176;
-  --navy: #0c0e0f;
-  --navy-2: #242a2e;
-  --green: #d4dce0;
-  --green-bright: #eef1f2;
-  --lime: #dce3e6;
-  --mist: #1b1f21;
+  --bg: #191715;
+  --surface: #211f1c;
+  --surface-strong: #2a2724;
+  --ink: #f4efe8;
+  --ink-soft: #bdb4ac;
+  --line: #423d38;
+  --line-strong: #766e67;
+  --navy: #100f0e;
+  --navy-2: #2e2a27;
+  --green: #ded1c5;
+  --green-bright: #f7eee6;
+  --lime: #e4d8cd;
+  --mist: #23201d;
   --shadow: 0 12px 32px rgb(0 0 0 / 30%);
   color-scheme: dark;
 }
@@ -134,7 +134,7 @@ h3 {
   padding: 10px 16px;
   transform: translateY(-150%);
   background: var(--lime);
-  color: #111111;
+  color: #2c2b29;
   font-weight: 800;
 }
 
@@ -370,7 +370,7 @@ h3 {
 
 .button-primary {
   background: var(--navy);
-  color: #fff;
+  color: #f8f3ed;
 }
 
 .button-primary:hover {
@@ -486,7 +486,7 @@ h3 {
   width: 42px;
   height: 42px;
   background: var(--lime);
-  color: #111111;
+  color: #2c2b29;
 }
 
 .map-line {
@@ -507,7 +507,7 @@ h3 {
 .stats-strip {
   padding-block: 34px 42px;
   background: var(--navy);
-  color: #fff;
+  color: #f8f3ed;
 }
 
 .stats-heading {
@@ -524,7 +524,7 @@ h3 {
 
 .stats-heading p:last-child {
   max-width: 580px;
-  color: #bdbdbd;
+  color: #cfc7bf;
   font-size: 0.75rem;
 }
 
@@ -557,7 +557,7 @@ h3 {
 }
 
 .stats-grid dt {
-  color: #bdbdbd;
+  color: #cfc7bf;
   font-size: 0.76rem;
   line-height: 1.45;
 }
@@ -672,7 +672,7 @@ h3 {
 
 .projects-band {
   background: var(--navy);
-  color: #f4f4f4;
+  color: #f6f0ea;
 }
 
 .projects-band .section-label {
@@ -680,7 +680,7 @@ h3 {
 }
 
 .projects-band .split-intro > p {
-  color: #bdbdbd;
+  color: #cfc7bf;
 }
 
 .project-grid {
@@ -879,7 +879,7 @@ h3 {
   padding: 32px;
   border-radius: var(--radius);
   background: var(--navy);
-  color: #fff;
+  color: #f8f3ed;
 }
 
 .recognition-panel .section-label {
@@ -1239,7 +1239,7 @@ h3 {
   padding: 30px;
   border-radius: var(--radius);
   background: var(--navy);
-  color: #fff;
+  color: #f8f3ed;
 }
 
 .wechat-card img {
@@ -1262,7 +1262,7 @@ h3 {
 
 .wechat-card p:last-child {
   margin-bottom: 0;
-  color: #bdbdbd;
+  color: #cfc7bf;
   font-size: 0.82rem;
 }
 
@@ -1276,7 +1276,7 @@ h3 {
   padding: 45px;
   border-radius: var(--radius);
   background: var(--navy);
-  color: #fff;
+  color: #f8f3ed;
 }
 
 .contact-primary .section-label {
@@ -1295,14 +1295,14 @@ h3 {
 
 .contact-primary .button-secondary {
   border-color: rgb(255 255 255 / 45%);
-  color: #fff;
+  color: #f8f3ed;
   cursor: pointer;
 }
 
 .contact-primary > p:last-child {
   max-width: 610px;
   margin: 32px 0 0;
-  color: #bdbdbd;
+  color: #cfc7bf;
   font-size: 0.86rem;
 }
 
@@ -1417,7 +1417,7 @@ h3 {
   padding: 38px;
   border-radius: var(--radius);
   background: var(--navy);
-  color: #fff;
+  color: #f8f3ed;
   grid-template-columns: 1fr auto;
   gap: 50px;
 }
@@ -1429,7 +1429,7 @@ h3 {
 .project-evidence p:last-child {
   max-width: 730px;
   margin-bottom: 0;
-  color: #bdbdbd;
+  color: #cfc7bf;
   font-size: 0.87rem;
 }
 
@@ -1442,7 +1442,7 @@ h3 {
 
 .project-evidence .button-secondary {
   border-color: rgb(255 255 255 / 40%);
-  color: #fff;
+  color: #f8f3ed;
 }
 
 .unavailable {
@@ -1492,7 +1492,7 @@ h3 {
 .site-footer {
   padding: 60px max(24px, calc((100vw - 1180px) / 2)) 25px;
   background: var(--navy);
-  color: #fff;
+  color: #f8f3ed;
 }
 
 .footer-inner {
@@ -1509,7 +1509,7 @@ h3 {
 
 .footer-inner p {
   margin: 8px 0 0;
-  color: #bdbdbd;
+  color: #cfc7bf;
   font-size: 0.75rem;
 }
 
@@ -1521,7 +1521,7 @@ h3 {
 
 .footer-inner nav a,
 .footer-rule a {
-  color: #d8d8d8;
+  color: #ddd4cc;
   font-size: 0.75rem;
 }
 
@@ -1531,7 +1531,7 @@ h3 {
   border-top: 1px solid rgb(255 255 255 / 18%);
   align-items: center;
   justify-content: space-between;
-  color: #999999;
+  color: #9d958d;
   font-size: 0.7rem;
 }
 
