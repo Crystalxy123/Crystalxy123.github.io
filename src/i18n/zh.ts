@@ -41,7 +41,7 @@ export const zh: UiDictionary = {
   updated: '更新于 2026 年 8 月',
   privacy: '本站不使用 Cookie 或访客追踪。',
   source: '网站源码',
-  readMore: '进一步了解',
+  readMore: '查看详情',
   viewAll: '查看全部',
   doi: 'DOI',
   copyDoi: '复制 DOI',

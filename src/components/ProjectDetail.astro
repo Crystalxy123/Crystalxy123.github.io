@@ -21,7 +21,7 @@ const { lang, project } = Astro.props as { lang: Lang; project: Project };
     <section><span>04</span><h2>{lang === 'zh' ? '个人贡献' : 'Contribution'}</h2><p>{t(project.contribution, lang)}</p></section>
   </div>
   <aside class="project-evidence">
-    <div><p class="section-label">{lang === 'zh' ? '证据与状态' : 'Evidence & status'}</p><p>{lang === 'zh' ? '页面描述来自本地旧站资料和论文首页。结果只对应文中评估情景，不代表已在核电厂大规模工程部署。' : 'This description is based on local legacy material and paper front matter. Reported results apply to evaluated scenarios and do not imply large-scale deployment in operating plants.'}</p></div>
+    <div><p class="section-label">{lang === 'zh' ? '说明' : 'Note'}</p><p>{lang === 'zh' ? '本页根据论文和项目资料整理。页面中的结果只适用于论文所述测试情景，不代表核电厂实际部署。' : 'This page is based on the paper and project records. Reported results apply only to the test scenarios described in the paper and do not indicate deployment at an operating plant.'}</p></div>
     <div class="project-actions">
       {project.doi && <a class="button button-primary" href={`https://doi.org/${project.doi}`} target="_blank" rel="noopener">DOI ↗</a>}
       {project.externalUrl && <a class="button button-secondary" href={project.externalUrl} target="_blank" rel="noopener">{lang === 'zh' ? '公开资料' : 'Public resource'} ↗</a>}
@@ -30,4 +30,3 @@ const { lang, project } = Astro.props as { lang: Lang; project: Project };
   </aside>
   <div class="tag-row detail-tags">{project.topics.map((topic) => <span>{topic}</span>)}</div>
 </article>
-

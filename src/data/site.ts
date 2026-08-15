@@ -39,12 +39,12 @@ export const profile = {
     en: 'Direct-entry PhD student (class of 2023), Institute of Nuclear and New Energy Technology, Tsinghua University',
   },
   headline: {
-    zh: '核电人因可靠性、智能决策与高自治运行研究',
-    en: 'Human Reliability, Intelligent Decision Support, and High-Autonomy Nuclear Operations',
+    zh: '核电人因可靠性与智能决策研究',
+    en: 'Human Reliability and Intelligent Decision Support in Nuclear Power',
   },
   shortBio: {
-    zh: '研究复杂核电系统中人的认知、失误与决策，并探索如何以可验证、人在回路的人工智能提升核安全。工作贯穿动态人因可靠性分析、数字化主控室和智能决策支持。',
-    en: 'I study cognition, human error, and decision-making in complex nuclear systems, and investigate how verifiable, human-in-the-loop AI can strengthen nuclear safety. My work spans dynamic human reliability analysis, digital control rooms, and intelligent decision support.',
+    zh: '我在清华大学攻读核科学与技术博士学位，研究数字化核电厂中的认知、操作失误和决策支持。主要工作包括动态人因可靠性分析、数字化主控室，以及人工智能方法在核安全中的应用。',
+    en: 'I am a PhD student in Nuclear Science and Technology at Tsinghua University. My research covers cognition and human error in digital nuclear power plants, dynamic human reliability analysis, and the use of AI for decision support in nuclear safety.',
   },
   email: 'xxy23@mails.tsinghua.edu.cn',
   institution: {
@@ -71,8 +71,8 @@ export const researchThemes = [
     code: '01',
     title: { zh: '人因可靠性与动态建模', en: 'Human reliability & dynamic modeling' },
     description: {
-      zh: '把认知过程、情景演化与运行数据纳入人因失误概率建模，支持从静态评价走向动态风险认知。',
-      en: 'Integrating cognition, scenario evolution, and operational data into human-error probability models to move from static assessment toward dynamic risk awareness.',
+      zh: '研究事故情景变化过程中，认知状态和运行数据如何影响人因失误概率。',
+      en: 'I study how cognition and operational data affect human error probabilities as accident scenarios change.',
     },
     tags: ['HRA', 'Dynamic HEP', 'Cognitive modeling'],
   },
@@ -80,8 +80,8 @@ export const researchThemes = [
     code: '02',
     title: { zh: '数字化主控室与人机交互', en: 'Digital control rooms & HMI' },
     description: {
-      zh: '研究界面特征、操作轨迹与团队协同如何影响认知负荷、情景意识和操作可靠性。',
-      en: 'Studying how interface features, interaction trajectories, and team coordination shape workload, situation awareness, and operational reliability.',
+      zh: '分析界面设计、操作轨迹和团队协作与认知负荷、情景意识及操作表现之间的关系。',
+      en: 'I examine how interface design, interaction traces, and teamwork relate to workload, situation awareness, and operator performance.',
     },
     tags: ['Human factors', 'HMI', 'Operator behavior'],
   },
@@ -89,8 +89,8 @@ export const researchThemes = [
     code: '03',
     title: { zh: '核电人工智能与智能决策', en: 'AI & intelligent decision support' },
     description: {
-      zh: '结合大语言模型、知识图谱和概率模型，为事故诊断、规程执行与风险决策提供可追溯支持。',
-      en: 'Combining language models, knowledge graphs, and probabilistic models for traceable support in diagnosis, procedure execution, and risk-informed decisions.',
+      zh: '使用大语言模型、知识图谱和概率模型辅助事故诊断、规程执行和风险判断。',
+      en: 'I use language models, knowledge graphs, and probabilistic models to support diagnosis, procedure execution, and risk assessment.',
     },
     tags: ['LLM', 'Knowledge graph', 'Decision support'],
   },
@@ -98,8 +98,8 @@ export const researchThemes = [
     code: '04',
     title: { zh: '高自治运行与安全治理', en: 'High autonomy & safety governance' },
     description: {
-      zh: '探索核电高自治运行中的功能分配、人在回路监督、验证评估与可解释安全边界。',
-      en: 'Exploring function allocation, human oversight, verification, and explainable safety boundaries for highly autonomous nuclear operations.',
+      zh: '研究高自治运行中的人机功能分配、人工监督、系统验证和安全约束。',
+      en: 'I study function allocation, human oversight, system verification, and safety constraints in highly autonomous operations.',
     },
     tags: ['High autonomy', 'Human-in-the-loop', 'AI safety'],
   },
@@ -294,7 +294,7 @@ export const projects: Project[] = [
     slug: 'krail',
     name: 'KRAIL',
     fullName: { zh: '融合 IDHEAS-DATA 与大语言模型的知识驱动人因可靠性分析框架', en: 'Knowledge-driven Reliability Analysis integrating IDHEAS-DATA and Large language models' },
-    summary: { zh: '以知识图谱作为可追溯检索层，辅助快速、透明的人因失误概率评估。', en: 'A knowledge-graph retrieval layer for faster and more transparent human-error probability assessment.' },
+    summary: { zh: '使用知识图谱检索 IDHEAS-DATA 证据，辅助人因失误概率评估。', en: 'Uses a knowledge graph to retrieve evidence from IDHEAS-DATA for human error probability assessment.' },
     problem: { zh: 'HRA 估计高度依赖专家判断，并受数据稀疏和信息不完整限制。', en: 'HRA estimates depend heavily on expert judgment and are constrained by sparse or partial evidence.' },
     method: { zh: '将 IDHEAS-DATA、知识图谱、检索增强生成与专家在环校核组合为两阶段流程。', en: 'A two-stage workflow combining IDHEAS-DATA, a knowledge graph, retrieval-augmented generation, and expert-in-the-loop validation.' },
     result: { zh: '本地正式论文显示，该框架在权威基准上提高 HEP 估计准确性，并将端到端评估控制在 150 秒以内。', en: 'The locally verified paper reports improved HEP accuracy on established benchmarks and end-to-end assessment in under 150 seconds.' },
@@ -324,10 +324,10 @@ export const projects: Project[] = [
     slug: 'wella',
     name: 'WELLA',
     fullName: { zh: '基于大语言模型与智能体的工作负荷估计框架', en: 'Workload Estimation with Large Language Models and Agents' },
-    summary: { zh: '从真实运行日志驱动多角色认知负荷的动态生成与估计。', en: 'Scenario-driven generation and estimation of dynamic workload across multiple operator roles.' },
+    summary: { zh: '根据运行日志估计不同岗位在任务过程中的认知负荷。', en: 'Estimates how cognitive workload changes across operator roles using operational logs.' },
     problem: { zh: '传统 HRA 数据粒度有限、收集成本高，难以覆盖动态协同任务。', en: 'Traditional HRA data are expensive, low-granularity, and poorly suited to dynamic collaborative tasks.' },
     method: { zh: '以微调大语言模型和多智能体仿真模拟操纵员、值长等角色的负荷变化。', en: 'Uses fine-tuned language models and agent simulation to model workload across operators and supervisors.' },
-    result: { zh: '论文报告其在核电运行场景中对认知负荷预测表现出更好的准确性与适应性。', en: 'The paper reports improved workload-prediction accuracy and adaptability in evaluated nuclear-operation scenarios.' },
+    result: { zh: '论文报告了该方法在所评估核电运行场景中的工作负荷预测结果。', en: 'The paper reports workload prediction results for the evaluated nuclear-operation scenarios.' },
     contribution: { zh: '第一作者；负责研究设计、验证与论文撰写。', en: 'First author; research design, validation, and manuscript development.' },
     year: '2026',
     status: 'Published research',
@@ -340,9 +340,9 @@ export const projects: Project[] = [
     slug: 'evoscentree',
     name: 'EvoScenTree',
     fullName: { zh: '场景驱动的动态应急决策支持方法', en: 'Scenario-Driven Dynamic Emergency Decision-Support Method' },
-    summary: { zh: '让执行智能体与校核智能体围绕演化事件树迭代形成应急处置建议。', en: 'Uses executor and validator agents with evolvable event trees to iteratively form emergency-response guidance.' },
+    summary: { zh: '使用演化事件树和两个智能体生成并校核应急处置建议。', en: 'Uses evolvable event trees and two agents to generate and check emergency response guidance.' },
     problem: { zh: '既有决策支持系统多依赖预定义事故序列，难以应对未预见情景。', en: 'Existing decision-support systems are often bound to predefined accident sequences.' },
-    method: { zh: '结合事件树专家知识与大语言模型驱动的执行—校核智能体循环。', en: 'Combines event-tree expert knowledge with an LLM-driven executor-validator agent loop.' },
+    method: { zh: '结合事件树专家知识与大语言模型驱动的执行和校核循环。', en: 'Combines event-tree expert knowledge with an LLM-based executor and validator loop.' },
     result: { zh: '论文案例显示该方法能够处理此前未遇到的事故情景并持续更新应急措施。', en: 'The paper demonstrates continuous response updates for previously unseen incident scenarios.' },
     contribution: { zh: '第一作者；负责研究构思、方法设计与论文撰写。', en: 'First author; research conception, method design, and manuscript development.' },
     year: '2025',
@@ -354,10 +354,10 @@ export const projects: Project[] = [
   {
     slug: 'insight',
     name: 'InSight-R',
-    fullName: { zh: '数字化主控室界面—行为—风险分析原型', en: 'Interface-Behavior-Risk Analysis Prototype for Digital Control Rooms' },
+    fullName: { zh: '数字化主控室界面、行为与风险分析原型', en: 'Interface, Behavior, and Risk Analysis Prototype for Digital Control Rooms' },
     summary: { zh: '从界面复杂度、操作轨迹到多状态失误概率的研究原型。', en: 'A research prototype linking interface complexity and interaction trajectories to multi-state error probabilities.' },
     problem: { zh: '旧版依赖 Python 分析服务，无法在 GitHub Pages 上安全运行。', en: 'The legacy version depends on a Python analysis service and cannot run safely on GitHub Pages.' },
-    method: { zh: '界面特征量化、S0–S4 操作状态标注与贝叶斯层次模型。', en: 'Interface feature quantification, S0-S4 state labeling, and Bayesian hierarchical modeling.' },
+    method: { zh: '界面特征量化、S0 至 S4 操作状态标注与贝叶斯层次模型。', en: 'Interface feature quantification, S0 to S4 state labeling, and Bayesian hierarchical modeling.' },
     result: { zh: '保留方法、数据格式和项目说明；上传分析功能已下线。', en: 'Method, data format, and project documentation are preserved; upload-based analysis is offline.' },
     contribution: { zh: '研究工具设计与原型实现。', en: 'Research-tool design and prototype implementation.' },
     year: '2025',
@@ -372,9 +372,9 @@ export const projects: Project[] = [
     summary: { zh: '旧站保留的浏览器端可靠性分析工具集合与工作流资料。', en: 'A legacy collection of browser-based reliability-analysis tools and workflow references.' },
     problem: { zh: '部分模块包含本地文件交互、旧运行环境或未完成的质量保证流程。', en: 'Some modules depend on local files, legacy runtimes, or unfinished quality-assurance workflows.' },
     method: { zh: '涵盖系统工作流、危险分析、故障树与 SPAR-H 等模块。', en: 'Covers system workflow, hazard analysis, fault-tree, and SPAR-H modules.' },
-    result: { zh: '以归档项目介绍形式保留，避免将未经完整验证的工具描述为生产系统。', en: 'Preserved as an archived project overview without presenting unverified tools as production systems.' },
+    result: { zh: '目前只保留项目介绍，工具不作为生产系统提供。', en: 'The site now keeps only the project overview. The tools are not offered as production systems.' },
     contribution: { zh: '原型工具整合与网页化。', en: 'Prototype integration and web presentation.' },
-    year: '2025–2026',
+    year: '2025 to 2026',
     status: 'Archived demo',
     topics: ['Reliability', 'SPAR-H', 'Fault tree'],
   },
@@ -408,47 +408,47 @@ export const projects: Project[] = [
 
 export const timeline = [
   {
-    period: '2023 — 至今',
-    periodEn: '2023 — Present',
-    title: { zh: '清华大学 · 核科学与技术直博', en: 'Tsinghua University · Direct-entry PhD in Nuclear Science and Technology' },
-    detail: { zh: '核能与新能源技术研究院；研究数字化核电厂人因失误动态建模与智能防控。', en: 'Institute of Nuclear and New Energy Technology; dynamic modeling and intelligent prevention of human error in digital nuclear power plants.' },
+    period: '2023 至今',
+    periodEn: '2023 to present',
+    title: { zh: '清华大学｜核科学与技术直博', en: 'Tsinghua University | Direct-entry PhD in Nuclear Science and Technology' },
+    detail: { zh: '研究方向为数字化核电厂人因失误动态建模与智能防控。', en: 'Research on dynamic modeling and intelligent prevention of human error in digital nuclear power plants.' },
   },
   {
     period: '2023',
     periodEn: '2023',
-    title: { zh: '北京科技大学 · 本科毕业', en: 'University of Science and Technology Beijing · Bachelor’s degree' },
-    detail: { zh: '旧站正式 CV 记录获校长奖章与北京市优秀毕业论文。', en: 'The legacy formal CV records the President’s Medal and an Outstanding Undergraduate Thesis award in Beijing.' },
+    title: { zh: '北京科技大学｜本科', en: 'University of Science and Technology Beijing | Bachelor’s degree' },
+    detail: { zh: '本科毕业，获校长奖章和北京市优秀毕业论文。', en: 'Graduated with the President’s Medal and an Outstanding Undergraduate Thesis award in Beijing.' },
   },
 ] satisfies Array<{ period: string; periodEn: string; title: Localized; detail: Localized }>;
 
 export const honors = [
-  { year: '2025', title: { zh: '清华大学首届探臻学者', en: 'Inaugural Tanzhen Scholar, Tsinghua University' }, note: { zh: '旧站正式 CV 记载：全校 15 人。', en: 'Legacy formal CV records a university-wide cohort of 15.' } },
-  { year: '2024', title: { zh: '清华大学研究生国家奖学金', en: 'National Scholarship, Tsinghua University' }, note: { zh: '旧站正式 CV 记载。', en: 'Recorded in the legacy formal CV.' } },
-  { year: '2024', title: { zh: '博士生论坛最佳论文奖', en: 'Best Paper, Doctoral Student Forum' }, note: { zh: '旧站正式 CV 记载。', en: 'Recorded in the legacy formal CV.' } },
-  { year: '2024', title: { zh: '人因安全全国研讨会最佳论文奖', en: 'Best Paper, National Symposium on Human Factors Safety' }, note: { zh: '旧站正式 CV 记载。', en: 'Recorded in the legacy formal CV.' } },
-  { year: '2023', title: { zh: '北京科技大学校长奖章', en: 'President’s Medal, University of Science and Technology Beijing' }, note: { zh: '旧站正式 CV 记载为学校最高荣誉。', en: 'Recorded in the legacy formal CV as the university’s highest honor.' } },
+  { year: '2025', title: { zh: '清华大学首届探臻学者', en: 'Inaugural Tanzhen Scholar, Tsinghua University' }, note: { zh: '首届评选，全校 15 人。', en: 'One of 15 scholars selected in the inaugural cohort.' } },
+  { year: '2024', title: { zh: '清华大学研究生国家奖学金', en: 'National Scholarship, Tsinghua University' }, note: { zh: '研究生国家奖学金。', en: 'National Scholarship for graduate students.' } },
+  { year: '2024', title: { zh: '博士生论坛最佳论文奖', en: 'Best Paper, Doctoral Student Forum' }, note: { zh: '博士生论坛。', en: 'Doctoral Student Forum.' } },
+  { year: '2024', title: { zh: '人因安全全国研讨会最佳论文奖', en: 'Best Paper, National Symposium on Human Factors Safety' }, note: { zh: '人因安全全国研讨会。', en: 'National Symposium on Human Factors Safety.' } },
+  { year: '2023', title: { zh: '北京科技大学校长奖章', en: 'President’s Medal, University of Science and Technology Beijing' }, note: { zh: '北京科技大学校级最高荣誉。', en: 'The university’s highest student honor.' } },
 ] satisfies Array<{ year: string; title: Localized; note: Localized }>;
 
 export const service = [
   {
     title: { zh: '学术同行评审', en: 'Peer review' },
     detail: {
-      zh: '旧站 CV 记录曾为 Reliability Engineering & System Safety、IEEE Internet of Things Journal、IEEE Sensors Journal、Energy and AI 等期刊审稿。',
-      en: 'The legacy CV records review service for Reliability Engineering & System Safety, IEEE Internet of Things Journal, IEEE Sensors Journal, Energy and AI, and other journals.',
+      zh: '曾为 Reliability Engineering & System Safety、IEEE Internet of Things Journal、IEEE Sensors Journal、Energy and AI 等期刊审稿。',
+      en: 'Reviewer for Reliability Engineering & System Safety, IEEE Internet of Things Journal, IEEE Sensors Journal, Energy and AI, and other journals.',
     },
   },
   {
     title: { zh: '核科普与公共传播', en: 'Nuclear science communication' },
     detail: {
-      zh: '旧站资料记录获评“全国优秀核科普讲解员”，并参与核能与气候议题的青年公共交流。',
-      en: 'Legacy site records recognition as a National Outstanding Nuclear Science Communicator and participation in youth-facing public dialogue on nuclear energy and climate.',
+      zh: '获评“全国优秀核科普讲解员”，并参与核能与气候议题的青年公共交流。',
+      en: 'Recognized as a National Outstanding Nuclear Science Communicator and involved in youth discussions on nuclear energy and climate.',
     },
   },
   {
     title: { zh: '“人类心智研究”公众号', en: 'Human Mind Research WeChat channel' },
     detail: {
-      zh: '持续分享认知科学、人因工程与人工智能相关研究；任务资料记载关注者 7,000+。',
-      en: 'Shares research on cognitive science, human factors, and AI; the migration brief records an audience of 7,000+.',
+      zh: '分享认知科学、人因工程与人工智能研究，目前关注者超过 7,000 人。',
+      en: 'A WeChat channel about cognitive science, human factors, and AI, with more than 7,000 followers.',
     },
   },
 ] satisfies Array<{ title: Localized; detail: Localized }>;
@@ -466,4 +466,3 @@ export function statusLabel(status: Project['status'], lang: Lang): string {
   };
   return labels[status][lang];
 }
-

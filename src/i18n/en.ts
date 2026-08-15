@@ -22,11 +22,10 @@ export const en = {
   updated: 'Updated August 2026',
   privacy: 'No cookies or visitor tracking are used.',
   source: 'Site source',
-  readMore: 'Learn more',
+  readMore: 'View details',
   viewAll: 'View all',
   doi: 'DOI',
   copyDoi: 'Copy DOI',
   copied: 'Copied',
   filterAll: 'All',
 } satisfies UiDictionary;
-
