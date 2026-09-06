@@ -20,6 +20,39 @@ export type NewsItem = {
 // Keep the latest news first. Dates can use YYYY-MM when the exact day is unspecified.
 export const news: NewsItem[] = [
   {
+    id: '2026-september-science-arts-exchange',
+    date: '2026-09-03',
+    dateLabel: { zh: '2026 年 9 月 3—4 日', en: 'September 3–4, 2026' },
+    category: { zh: '交流活动', en: 'Exchange' },
+    title: {
+      zh: '参加中美科协活动，在跨学科交流中收获启发',
+      en: 'Learning through conversations across science and the arts',
+    },
+    summary: {
+      zh: '2026 年 9 月 3—4 日，参加中美科协活动，与艺术专业的同学交流学习，收获了许多新的思考与启发。',
+      en: 'On September 3–4, 2026, I participated in a 中美科协 event and had rewarding conversations with students in the arts.',
+    },
+    paragraphs: [
+      {
+        zh: '这次交流让我有机会跳出熟悉的研究视角，从不同的角度思考问题。感谢大家的真诚分享，期待未来有更多跨学科交流与学习的机会。',
+        en: 'These conversations gave me an opportunity to step outside my usual research perspective and consider questions from different angles. I am grateful to everyone who shared their ideas and look forward to more opportunities to learn across disciplines.',
+      },
+    ],
+    image: {
+      src: '/images/news/2026-september-science-arts-exchange.jpg',
+      width: 1280,
+      height: 1707,
+      alt: {
+        zh: '活动期间拍摄的中国国际青年交流中心建筑外观。',
+        en: 'Exterior of the China International Youth Exchange Center, photographed during the event.',
+      },
+      caption: {
+        zh: '活动随记 · 中国国际青年交流中心',
+        en: 'From the visit · China International Youth Exchange Center',
+      },
+    },
+  },
+  {
     id: '2026-tsinghua-tanzhen-scholar',
     date: '2026-09',
     dateLabel: { zh: '2026 年 9 月', en: 'September 2026' },

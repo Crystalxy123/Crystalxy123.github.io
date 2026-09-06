@@ -9,7 +9,7 @@ const articleUrl = `${localizedPath(lang, 'news')}#${item.id}`;
 const Heading = compact ? 'h3' : 'h2';
 ---
 
-<article class:list={['news-card', { 'news-card-compact': compact }]} id={item.id} aria-labelledby={`${item.id}-title`}>
+<article class:list={['news-card', { 'news-card-compact': compact, 'news-card-portrait': item.image.height > item.image.width }]} id={item.id} aria-labelledby={`${item.id}-title`}>
   <div class="news-copy">
     <div class="news-meta">
       <time datetime={item.date}>{t(item.dateLabel, lang)}</time>
@@ -23,7 +23,7 @@ const Heading = compact ? 'h3' : 'h2';
     {compact && <a class="news-read-more" href={articleUrl}>{lang === 'zh' ? '阅读全文' : 'Read the story'} <span aria-hidden="true">↗</span></a>}
   </div>
   <figure class="news-figure">
-    <a href={compact ? articleUrl : item.image.src} aria-label={compact ? t(item.title, lang) : (lang === 'zh' ? '查看开学典礼配图大图' : 'View the full-size ceremony photo')}>
+    <a href={compact ? articleUrl : item.image.src} aria-label={compact ? t(item.title, lang) : `${lang === 'zh' ? '查看大图：' : 'View full size: '}${t(item.image.caption, lang)}`}>
       <img src={item.image.src} width={item.image.width} height={item.image.height} alt={t(item.image.alt, lang)} loading="lazy" decoding="async" />
     </a>
     {!compact && <figcaption><span>{t(item.image.caption, lang)}</span><a href={item.image.src}>{lang === 'zh' ? '查看大图' : 'View full size'} <span aria-hidden="true">↗</span></a></figcaption>}
@@ -139,8 +139,25 @@ const Heading = compact ? 'h3' : 'h2';
     margin-bottom: 24px;
   }
 
+  .news-card-portrait:not(.news-card-compact) {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    align-items: center;
+    gap: clamp(24px, 4vw, 48px);
+  }
+
+  .news-card-portrait .news-figure {
+    width: 100%;
+    max-width: 480px;
+    justify-self: center;
+  }
+
+  .news-card-portrait.news-card-compact .news-figure {
+    max-width: 320px;
+  }
+
   @media (max-width: 800px) {
-    .news-card-compact {
+    .news-card-compact,
+    .news-card-portrait:not(.news-card-compact) {
       grid-template-columns: minmax(0, 1fr);
       gap: 24px;
     }
