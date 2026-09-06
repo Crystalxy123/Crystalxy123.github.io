@@ -114,6 +114,7 @@ const projectStatuses = [...new Set(projects.map((item) => item.status))];
 
 {section === 'projects' && (
   <div class="page-content section-shell">
+    <a class="button button-secondary showcase-entry" href="/research-showcase/" hreflang="zh-CN">{lang === 'zh' ? '成果图解：7 项研究的图表、结果与案例' : 'Research results: figures and case studies (Chinese)'} <span aria-hidden="true">→</span></a>
     <div class="filter-bar" data-filter-group>
       <label>{lang === 'zh' ? '状态' : 'Status'}<select data-filter-field="status"><option value="all">{lang === 'zh' ? '全部状态' : 'All statuses'}</option>{projectStatuses.map((status) => <option value={status}>{status}</option>)}</select></label>
       <label>{lang === 'zh' ? '主题' : 'Topic'}<select data-filter-field="topic"><option value="all">{lang === 'zh' ? '全部主题' : 'All topics'}</option>{projectTopics.map((topic) => <option value={topic}>{topic}</option>)}</select></label>

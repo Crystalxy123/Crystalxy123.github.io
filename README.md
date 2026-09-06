@@ -2,7 +2,7 @@
 
 Bilingual academic portfolio for 萧星宇 / Xingyu Xiao, focused on nuclear human reliability, digital main control rooms, intelligent decision support, and high-autonomy nuclear operations.
 
-- Canonical URL: `https://www.xiaoxingyu2001.com`
+- Canonical URL: `https://xiaoxingyu2001.com`
 - Chinese site: `/`
 - English site: `/en/`
 - Hosting: GitHub Pages through GitHub Actions
@@ -112,7 +112,7 @@ Every pull request runs lint, type-check, build, and generated-site validation. 
 
 The existing public repository is `Crystalxy123/Crystalxy123.github.io`. Its historical Jekyll site remains on `master`; this migration is published through `codex/github-pages-migration` and reviewed in a pull request so the old commit history is not overwritten.
 
-Repository Settings → Pages must use **GitHub Actions** as the source. The custom domain must be registered as `www.xiaoxingyu2001.com`. See `DNS_MIGRATION.md` before changing DNS.
+Repository Settings → Pages must use **GitHub Actions** as the source. The current custom domain is `xiaoxingyu2001.com`; the public CNAME and generated canonical metadata use this address. `DNS_MIGRATION.md` records an earlier www-domain migration plan.
 
 ## Common issues
 

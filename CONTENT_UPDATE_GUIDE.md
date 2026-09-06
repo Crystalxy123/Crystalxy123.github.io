@@ -120,3 +120,17 @@
 
 在 GitHub 仓库的 **Actions** 页面等待工作流变绿，再访问正式网址和至少一个深层页面。域名或 HTTPS 异常时，按照 `DNS_MIGRATION.md` 排查，不要重新启用旧端口依赖。
 
+
+
+## 更新成果图解
+
+“成果图解”位于 `public/research-showcase/`，包含一个总览和七个中文研究详情页。它独立保留图表、可切换的数据对比与视频播放，通过网站主导航、首页和项目列表进入。英文页面的入口注明内容为中文。
+
+- 修改研究文字：编辑该目录中的 HTML 文件。
+- 修改展示样式：编辑 `public/research-showcase/assets/site.css`。
+- 修改图表交互：编辑 `public/research-showcase/assets/site.js`。
+- 新增页面时同步更新 `public/sitemap.xml`，并保留 canonical 元数据。
+- `src/data/site.ts` 的项目记录可通过 `resultsUrl` 关联图解详情。现有论文条目和正式项目名称继续独立维护，避免把版本不同的研究名称强行合并。
+- 发布内容不包括 PPT 文件或翻页页面。视频只保留在线播放，不添加下载链接，并保留 `controlslist="nodownload"`。
+
+运行 `npm run check` 通过后再发布。

@@ -29,6 +29,7 @@ export type Project = {
   topics: string[];
   doi?: string;
   externalUrl?: string;
+  resultsUrl?: string;
   featured?: boolean;
 };
 
@@ -277,6 +278,7 @@ export const publications: Publication[] = [
 export const projects: Project[] = [
   {
     slug: 'drif',
+    resultsUrl: '/research-showcase/projects/drif.html',
     name: 'DRIF',
     fullName: { zh: '动态风险指引型人因失误防控框架', en: 'Dynamic Risk-Informed Framework for Human Error Prevention' },
     summary: { zh: '面向核电应急情景的实时人因风险识别与决策支持框架。', en: 'A real-time human-risk assessment and decision-support framework for nuclear emergency scenarios.' },
@@ -292,6 +294,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'krail',
+    resultsUrl: '/research-showcase/projects/krail.html',
     name: 'KRAIL',
     fullName: { zh: '融合 IDHEAS-DATA 与大语言模型的知识驱动人因可靠性分析框架', en: 'Knowledge-driven Reliability Analysis integrating IDHEAS-DATA and Large language models' },
     summary: { zh: '使用知识图谱检索 IDHEAS-DATA 证据，辅助人因失误概率评估。', en: 'Uses a knowledge graph to retrieve evidence from IDHEAS-DATA for human error probability assessment.' },
@@ -307,6 +310,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'autograph',
+    resultsUrl: '/research-showcase/projects/autograph.html',
     name: 'AutoGraph',
     fullName: { zh: '面向规程自动化与动态人因支持的知识图谱智能体', en: 'Knowledge-Graph Agent for Procedure Automation and Dynamic Human Reliability Support' },
     summary: { zh: '把自然语言规程语义落到数字化主控室的可执行界面动作。', en: 'Grounds natural-language procedure intent into executable interface actions in digital control rooms.' },
@@ -322,6 +326,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'wella',
+    resultsUrl: '/research-showcase/projects/wella.html',
     name: 'WELLA',
     fullName: { zh: '基于大语言模型与智能体的工作负荷估计框架', en: 'Workload Estimation with Large Language Models and Agents' },
     summary: { zh: '根据运行日志估计不同岗位在任务过程中的认知负荷。', en: 'Estimates how cognitive workload changes across operator roles using operational logs.' },
@@ -353,6 +358,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'insight',
+    resultsUrl: '/research-showcase/projects/insight-r.html',
     name: 'InSight-R',
     fullName: { zh: '数字化主控室界面、行为与风险分析原型', en: 'Interface, Behavior, and Risk Analysis Prototype for Digital Control Rooms' },
     summary: { zh: '从界面复杂度、操作轨迹到多状态失误概率的研究原型。', en: 'A research prototype linking interface complexity and interaction trajectories to multi-state error probabilities.' },

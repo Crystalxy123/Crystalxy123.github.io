@@ -27,6 +27,7 @@ const languageTarget = alternatePath(lang, pathname);
       {sections.map((item) => (
         <a href={localizedPath(lang, item)} aria-current={section === item ? 'page' : undefined}>{ui.nav[item]}</a>
       ))}
+      <a href="/research-showcase/" hreflang="zh-CN">{lang === 'zh' ? '成果图解' : 'Results (中文)'}</a>
       <div class="nav-tools">
         <a class="language-link" href={languageTarget} data-language-choice={lang === 'zh' ? 'en' : 'zh'}>{ui.languageSwitch}</a>
         <button class="theme-button" type="button" data-theme-button aria-label={ui.theme} title={ui.theme}>

@@ -1,5 +1,5 @@
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
-import { extname, join, resolve } from 'node:path';
+import { dirname, extname, join, resolve } from 'node:path';
 
 const root = resolve('dist');
 const textExtensions = new Set(['.html', '.css', '.js', '.xml', '.txt']);
@@ -14,15 +14,15 @@ function walk(directory) {
   }
 }
 
-function localTarget(url) {
+function localTarget(url, sourceFile) {
   const clean = decodeURI(url.split('#')[0].split('?')[0]);
-  if (!clean.startsWith('/')) return undefined;
-  const relative = clean.slice(1);
-  if (!relative) return join(root, 'index.html');
-  if (clean.endsWith('/')) return join(root, relative, 'index.html');
-  const direct = join(root, relative);
+  if (!clean) return sourceFile;
+  const direct = clean.startsWith('/')
+    ? join(root, clean.slice(1))
+    : resolve(dirname(sourceFile), clean);
+  if (clean.endsWith('/')) return join(direct, 'index.html');
   if (existsSync(direct)) return direct;
-  return join(root, relative, 'index.html');
+  return join(direct, 'index.html');
 }
 
 if (!existsSync(root)) {
@@ -44,14 +44,24 @@ for (const file of htmlFiles) {
     if (titleSet.has(title)) errors.push(`${relative}: duplicate title: ${title}`);
     titleSet.add(title);
   }
-  if (!legacyRedirect && !/<link rel="canonical" href="https:\/\/www\.xiaoxingyu2001\.com\//.test(html)) {
+  if (!legacyRedirect && !/<link rel="canonical" href="https:\/\/xiaoxingyu2001\.com\//.test(html)) {
     errors.push(`${relative}: missing canonical URL`);
   }
-  for (const match of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
+  for (const match of html.matchAll(/(?:href|src|poster)="([^"]+)"/g)) {
     const url = match[1];
     if (/^(?:https?:|mailto:|tel:|data:|#)/.test(url)) continue;
-    const target = localTarget(url);
+    const target = localTarget(url, file);
     if (target && !existsSync(target)) errors.push(`${relative}: broken internal reference ${url}`);
+  }
+  if (relative.startsWith('/research-showcase/')) {
+    if (/-slides\.html|data-viewer|data-slide|下载视频|<a\b[^>]*\bdownload\b/.test(html)) {
+      errors.push(`${relative}: removed presentation or download interface remains`);
+    }
+    for (const video of html.matchAll(/<video\b[^>]*>/g)) {
+      if (!/controlslist="nodownload"/.test(video[0])) {
+        errors.push(`${relative}: video download control is not disabled`);
+      }
+    }
   }
 }
 
@@ -74,6 +84,11 @@ for (const required of ['index.html', 'en/index.html', '404.html', 'sitemap.xml'
   if (!existsSync(join(root, required))) errors.push(`missing required output: ${required}`);
 }
 
+for (const page of ['index', 'projects/wella', 'projects/nullm-ftg', 'projects/insight-r', 'projects/autograph', 'projects/krail', 'projects/evotasktree', 'projects/drif']) {
+  const required = `research-showcase/${page}.html`;
+  if (!existsSync(join(root, required))) errors.push(`missing research output: ${required}`);
+}
+
 if (errors.length) {
   console.error(`Build verification failed with ${errors.length} issue(s):`);
   errors.forEach((error) => console.error(`- ${error}`));
@@ -81,4 +96,3 @@ if (errors.length) {
 }
 
 console.log(`Verified ${htmlFiles.length} HTML files: internal links, metadata, required routes, and server-reference scan passed.`);
-

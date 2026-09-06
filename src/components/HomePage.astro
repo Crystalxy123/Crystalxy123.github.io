@@ -88,7 +88,10 @@ const featuredPublications = publications.filter((item) => item.featured).slice(
     <div class="project-grid">
       {featuredProjects.map((project) => <ProjectCard project={project} lang={lang} />)}
     </div>
-    <a class="section-link" href={localizedPath(lang, 'projects')}>{lang === 'zh' ? '浏览全部项目' : 'Browse all projects'} <span>→</span></a>
+    <div class="project-collection-links">
+      <a class="section-link" href={localizedPath(lang, 'projects')}>{lang === 'zh' ? '浏览全部项目' : 'Browse all projects'} <span>→</span></a>
+      <a class="section-link" href="/research-showcase/" hreflang="zh-CN">{lang === 'zh' ? '查看 7 项研究的图表与结果' : 'Explore 7 studies: figures and results (Chinese)'} <span>→</span></a>
+    </div>
   </div>
 </section>
 

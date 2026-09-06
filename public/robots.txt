@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.xiaoxingyu2001.com/sitemap.xml
+Sitemap: https://xiaoxingyu2001.com/sitemap.xml
 

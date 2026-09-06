@@ -1,5 +1,7 @@
 # DNS migration to GitHub Pages
 
+> Current configuration (2026-09-06): GitHub Pages uses `xiaoxingyu2001.com`, which serves the site over HTTPS. The repository now aligns its CNAME and canonical metadata with that existing domain. The www-domain instructions below are historical migration notes, not required steps for this release.
+
 Canonical domain: `www.xiaoxingyu2001.com`  
 Confirmed user-site target: `Crystalxy123.github.io`  
 Check date: 2026-08-14 (Asia/Shanghai)

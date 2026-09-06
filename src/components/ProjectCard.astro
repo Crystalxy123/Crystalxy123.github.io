@@ -22,4 +22,5 @@ const { project, lang, filtered = false } = Astro.props as { project: Project; l
   <a class="card-link" href={localizedPath(lang, `projects/${project.slug}`)}>
     {lang === 'zh' ? '查看项目' : 'View project'} <span aria-hidden="true">→</span>
   </a>
+  {project.resultsUrl && <a class="card-link results-link" href={project.resultsUrl} hreflang="zh-CN">{lang === 'zh' ? '图表与实验结果' : 'Figures and results (Chinese)'} <span aria-hidden="true">↗</span></a>}
 </article>

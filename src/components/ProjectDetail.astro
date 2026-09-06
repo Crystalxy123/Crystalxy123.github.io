@@ -13,6 +13,7 @@ const { lang, project } = Astro.props as { lang: Lang; project: Project };
     <p class="project-acronym">{project.name}</p>
     <h1>{t(project.fullName, lang)}</h1>
     <p>{t(project.summary, lang)}</p>
+    {project.resultsUrl && <a class="button button-primary" href={project.resultsUrl} hreflang="zh-CN">{lang === 'zh' ? '查看图表与实验结果' : 'Figures and experimental results (Chinese)'} <span aria-hidden="true">→</span></a>}
   </header>
   <div class="project-detail-grid">
     <section><span>01</span><h2>{lang === 'zh' ? '研究问题' : 'Problem'}</h2><p>{t(project.problem, lang)}</p></section>
@@ -25,7 +26,7 @@ const { lang, project } = Astro.props as { lang: Lang; project: Project };
     <div class="project-actions">
       {project.doi && <a class="button button-primary" href={`https://doi.org/${project.doi}`} target="_blank" rel="noopener">DOI ↗</a>}
       {project.externalUrl && <a class="button button-secondary" href={project.externalUrl} target="_blank" rel="noopener">{lang === 'zh' ? '公开资料' : 'Public resource'} ↗</a>}
-      {!project.doi && !project.externalUrl && <span class="unavailable">{lang === 'zh' ? '交互式演示当前不可用' : 'Interactive demo currently unavailable'}</span>}
+      {!project.doi && !project.externalUrl && !project.resultsUrl && <span class="unavailable">{lang === 'zh' ? '交互式演示当前不可用' : 'Interactive demo currently unavailable'}</span>}
     </div>
   </aside>
   <div class="tag-row detail-tags">{project.topics.map((topic) => <span>{topic}</span>)}</div>
