@@ -8,6 +8,7 @@ export const en = {
   siteName: 'Xingyu Xiao',
   nav: {
     home: 'Home',
+    news: 'News',
     about: 'About',
     research: 'Research',
     publications: 'Publications',
@@ -19,7 +20,7 @@ export const en = {
   theme: 'Toggle dark or light theme',
   menu: 'Open navigation menu',
   closeMenu: 'Close navigation menu',
-  updated: 'Updated August 2026',
+  updated: 'Updated September 2026',
   privacy: 'No cookies or visitor tracking are used.',
   source: 'Site source',
   readMore: 'View details',

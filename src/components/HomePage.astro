@@ -1,9 +1,11 @@
 ---
 import { localizedPath } from '../data/navigation';
+import { news } from '../data/news';
 import { honors, profile, projects, publications, researchThemes, t, timeline } from '../data/site';
 import type { Lang } from '../data/site';
 import ProjectCard from './ProjectCard.astro';
 import PublicationItem from './PublicationItem.astro';
+import NewsCard from './NewsCard.astro';
 
 const { lang } = Astro.props as { lang: Lang };
 const featuredProjects = projects.filter((item) => item.featured).slice(0, 6);
@@ -52,6 +54,19 @@ const featuredPublications = publications.filter((item) => item.featured).slice(
         </div>
       ))}
     </dl>
+  </div>
+</section>
+
+<section class="content-section section-shell news-home" aria-labelledby="news-heading">
+  <div class="section-intro news-section-intro">
+    <div>
+      <p class="section-label">{lang === 'zh' ? '新闻' : 'News'}</p>
+      <h2 id="news-heading">{lang === 'zh' ? '最新动态' : 'Latest updates'}</h2>
+    </div>
+    <a class="news-read-more" href={localizedPath(lang, 'news')}>{lang === 'zh' ? '全部新闻' : 'All news'} <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="news-home-list">
+    {news.slice(0, 3).map((item) => <NewsCard item={item} lang={lang} compact />)}
   </div>
 </section>
 

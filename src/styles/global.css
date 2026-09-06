@@ -1535,7 +1535,7 @@ h3 {
   font-size: 0.7rem;
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 1200px) {
   .menu-button {
     display: grid;
     width: 42px;
@@ -1558,6 +1558,8 @@ h3 {
     right: 0;
     left: 0;
     display: none;
+    max-height: calc(100dvh - 76px);
+    overflow-y: auto;
     padding: 20px 24px 28px;
     border-bottom: 1px solid var(--line);
     background: var(--bg);
@@ -1901,3 +1903,58 @@ h3 {
 .project-collection-links { display: flex; flex-wrap: wrap; gap: 0 32px; }
 .showcase-entry { margin-bottom: 28px; }
 .project-card .results-link { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+
+/* News follows the site's restrained typography and uses the complete source photo. */
+.news-page-hero {
+  display: block;
+  max-width: 1040px;
+  padding-block: clamp(40px, 6vw, 72px) 40px;
+}
+
+.news-page-hero h1 {
+  margin: 12px 0 16px;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+}
+
+.news-page-hero > p:last-child {
+  max-width: 640px;
+  margin-bottom: 0;
+}
+
+.news-section-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.news-read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding-block: 6px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.news-read-more:hover {
+  text-decoration: underline;
+}
+
+.news-home-list,
+.news-list {
+  display: grid;
+  gap: 48px;
+}
+
+.news-home-list > article + article,
+.news-list > article + article {
+  padding-top: 48px;
+  border-top: 1px solid var(--line);
+}
+
+.news-list {
+  max-width: 1040px;
+}

@@ -4,7 +4,7 @@ export type UiDictionary = {
   languageSwitch: string;
   skip: string;
   siteName: string;
-  nav: Record<'home' | 'about' | 'research' | 'publications' | 'projects' | 'honors' | 'service' | 'contact', string>;
+  nav: Record<'home' | 'news' | 'about' | 'research' | 'publications' | 'projects' | 'honors' | 'service' | 'contact', string>;
   theme: string;
   menu: string;
   closeMenu: string;
@@ -27,6 +27,7 @@ export const zh: UiDictionary = {
   siteName: '萧星宇',
   nav: {
     home: '首页',
+    news: '新闻',
     about: '介绍',
     research: '研究',
     publications: '论文',
@@ -38,7 +39,7 @@ export const zh: UiDictionary = {
   theme: '切换深色或浅色模式',
   menu: '打开导航菜单',
   closeMenu: '关闭导航菜单',
-  updated: '更新于 2026 年 8 月',
+  updated: '更新于 2026 年 9 月',
   privacy: '本站不使用 Cookie 或访客追踪。',
   source: '网站源码',
   readMore: '查看详情',

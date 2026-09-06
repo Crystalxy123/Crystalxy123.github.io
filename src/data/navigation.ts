@@ -1,6 +1,7 @@
 import type { Lang } from './site';
 
 export const sections = [
+  'news',
   'about',
   'research',
   'publications',
@@ -25,4 +26,3 @@ export function alternatePath(lang: Lang, pathname: string): string {
   }
   return clean === '/' ? '/en/' : `/en${clean}`;
 }
-
