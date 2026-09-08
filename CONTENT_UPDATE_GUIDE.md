@@ -39,7 +39,7 @@
 
 - `id`：唯一的英文短名称，用作新闻链接中的定位标记。
 - `date`：事件日期；只确定月份时使用 `YYYY-MM`，确定具体日期时使用 `YYYY-MM-DD`。如果只知道“迎新期间”等时段，可省略 `date`，在 `dateLabel` 中如实描述，不补猜具体日期。
-- `dateLabel`、`category`、`title`、`summary`：分别填写中英文日期、分类、标题和摘要。
+- `dateLabel`、`category`、`title`、`summary`：分别填写中英文日期、分类、标题和摘要。活动时间完全不明确时，可同时省略 `date` 和 `dateLabel`，页面仅显示分类；待时间确认后再补入相应位置。
 - `paragraphs`：正文段落，每段都填写 `zh` 和 `en`。
 - `image`：将配图放到 `public/images/news/`，填写对应的 `/images/news/文件名`、图片实际宽高、中英文替代文字和图注。
 - `additionalImages`（可选）：有多张配图时，按 `image` 的格式补充图片列表。新闻正文会同时展示主图和这些配图，首页摘要只使用主图。

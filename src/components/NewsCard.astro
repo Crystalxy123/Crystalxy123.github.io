@@ -13,7 +13,7 @@ const galleryImages = !compact && item.additionalImages?.length ? [item.image, .
 <article class:list={['news-card', { 'news-card-compact': compact, 'news-card-portrait': item.image.height > item.image.width && galleryImages.length === 0 }]} id={item.id} aria-labelledby={`${item.id}-title`}>
   <div class="news-copy">
     <div class="news-meta">
-      {item.date ? <time datetime={item.date}>{t(item.dateLabel, lang)}</time> : <span>{t(item.dateLabel, lang)}</span>}
+      {item.dateLabel && (item.date ? <time datetime={item.date}>{t(item.dateLabel, lang)}</time> : <span>{t(item.dateLabel, lang)}</span>)}
       <span class="news-category">{t(item.category, lang)}</span>
     </div>
     <Heading id={`${item.id}-title`}>
@@ -67,7 +67,7 @@ const galleryImages = !compact && item.additionalImages?.length ? [item.image, .
     font-variant-numeric: tabular-nums;
   }
 
-  .news-meta .news-category {
+  .news-meta > :not(.news-category) + .news-category {
     padding-left: 20px;
     border-left: 1px solid var(--line-strong);
   }

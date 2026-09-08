@@ -11,7 +11,7 @@ export type NewsImage = {
 export type NewsItem = {
   id: string;
   date?: string;
-  dateLabel: Localized;
+  dateLabel?: Localized;
   category: Localized;
   title: Localized;
   summary: Localized;
@@ -232,5 +232,36 @@ export const news: NewsItem[] = [
         },
       },
     ],
+  },
+  {
+    id: 'harvard-undergraduates-ai-exchange',
+    category: { zh: '学术交流', en: 'Academic exchange' },
+    title: {
+      zh: '与哈佛本科生交流 AI，在互学中收获启发',
+      en: 'Exchanging ideas on AI with Harvard undergraduates',
+    },
+    summary: {
+      zh: '与哈佛大学本科生同学围绕人工智能交流想法、分享学习体会，是一次收获颇多的互学经历。',
+      en: 'I exchanged ideas about artificial intelligence and shared learning experiences with Harvard undergraduate students. It was a valuable opportunity to learn from one another.',
+    },
+    paragraphs: [
+      {
+        zh: '不同的学习背景带来了新的观察角度，也让我对一些熟悉的问题有了新的思考。感谢这次坦诚的交流，期待今后继续相互学习、共同进步。',
+        en: 'Our different learning backgrounds brought new perspectives and encouraged me to reconsider familiar questions. I am grateful for this open exchange and look forward to continuing to learn together.',
+      },
+    ],
+    image: {
+      src: '/images/news/harvard-undergraduates-ai-exchange.jpg',
+      width: 1280,
+      height: 1707,
+      alt: {
+        zh: '交流现场的姓名桌牌，印有 Xingyu Xiao 和清华大学标识。',
+        en: 'A name card at the exchange, displaying Xingyu Xiao’s name and the Tsinghua University logo.',
+      },
+      caption: {
+        zh: 'AI 交流随记',
+        en: 'From the AI exchange',
+      },
+    },
   },
 ];
