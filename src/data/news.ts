@@ -20,6 +20,39 @@ export type NewsItem = {
 // Keep the latest news first. Dates can use YYYY-MM when the exact day is unspecified.
 export const news: NewsItem[] = [
   {
+    id: '2026-inner-mongolia-talent-training',
+    date: '2026-09-06',
+    dateLabel: { zh: '2026 年 9 月 6—11 日', en: 'September 6–11, 2026' },
+    category: { zh: '研修随记', en: 'Training notes' },
+    title: {
+      zh: '赴内蒙古参加科协人才研修，关注新能源与生态发展',
+      en: 'Training in Inner Mongolia: perspectives on clean energy and ecology',
+    },
+    summary: {
+      zh: '2026 年 9 月 6—11 日，我在内蒙古参加中国科协党校（科技人才学院）“领航计划”青年科技人才国情研修活动（总第 153 期）。',
+      en: 'I am taking part in the China Association for Science and Technology’s Linghang training program for young scientists in Inner Mongolia, scheduled for September 6–11, 2026 (153rd session).',
+    },
+    paragraphs: [
+      {
+        zh: '这几天的学习中，我感受到当地对新能源发展与生态保护的重视，也开始更多地思考能源科技研究与绿色发展之间的联系。期待在接下来的研修中继续学习，把这些观察带回自己的研究与实践。',
+        en: 'In these first days of the program, I have been struck by the local emphasis on clean energy development and ecological protection. This has prompted me to think more about the connections between energy research and sustainable development. I look forward to learning more during the rest of the program and bringing these observations into my own research and practice.',
+      },
+    ],
+    image: {
+      src: '/images/news/2026-inner-mongolia-talent-training.jpg',
+      width: 1707,
+      height: 1280,
+      alt: {
+        zh: '内蒙古研修现场，印有萧星宇姓名及“领航计划”青年科技人才国情研修活动名称的桌牌。',
+        en: 'A name card for Xingyu Xiao at the Linghang training program in Inner Mongolia.',
+      },
+      caption: {
+        zh: '内蒙古研修现场 · “领航计划”青年科技人才国情研修活动',
+        en: 'At the Linghang training program in Inner Mongolia',
+      },
+    },
+  },
+  {
     id: '2026-september-science-arts-exchange',
     date: '2026-09-03',
     dateLabel: { zh: '2026 年 9 月 3—4 日', en: 'September 3–4, 2026' },
