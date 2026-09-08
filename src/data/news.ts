@@ -288,6 +288,43 @@ export const news: NewsItem[] = [
     ],
   },
   {
+    id: '2026-icre-nuhf-claw-presentation',
+    date: '2026-07-19',
+    dateLabel: { zh: '2026 年 7 月 19—21 日', en: 'July 19–21, 2026' },
+    category: { zh: '会议报告', en: 'Conference presentation' },
+    title: {
+      zh: '出席 ICRE 2026，介绍 NuHF-Claw 研究工作',
+      en: 'Presenting NuHF-Claw at ICRE 2026',
+    },
+    summary: {
+      zh: '2026 年 7 月 19—21 日，我出席在杭州举行的第十届可靠性工程国际会议（ICRE 2026），并作报告介绍自己的 NuHF-Claw 研究工作。',
+      en: 'I attended the 10th International Conference on Reliability Engineering (ICRE 2026), held in Hangzhou, China, on July 19–21, 2026, and gave a presentation on my NuHF-Claw research.',
+    },
+    paragraphs: [
+      {
+        zh: '报告介绍了 NuHF-Claw：一种面向数字化核电主控室的风险约束认知智能体框架，关注以人为中心的规程支持（报告编号：RE2048-A）。',
+        en: 'My presentation, “NuHF-Claw: A Risk-Constrained Cognitive Agent Framework for Human-Centered Procedure Support in Digital Nuclear Control Rooms” (RE2048-A), explored the use of risk constraints and cognitive agents to support human-centered procedures in digital nuclear control rooms.',
+      },
+      {
+        zh: '向同行介绍工作，也是一次重新梳理研究问题与表达思路的机会。感谢会议提供的交流平台，期待在今后的学习与交流中继续完善研究。',
+        en: 'Presenting this work was an opportunity to revisit my research questions and clarify how I communicate them. I am grateful for the opportunity to share my work and look forward to refining it through further learning and exchange.',
+      },
+    ],
+    image: {
+      src: '/images/news/2026-icre-nuhf-claw-presentation.png',
+      width: 1150,
+      height: 820,
+      alt: {
+        zh: 'ICRE 2026 参会证书，记载萧星宇在杭州会议上报告 NuHF-Claw 研究工作，会议日期为 2026 年 7 月 19—21 日。',
+        en: 'ICRE 2026 certificate of participation confirming Xingyu Xiao’s presentation on NuHF-Claw at the conference held in Hangzhou on July 19–21, 2026.',
+      },
+      caption: {
+        zh: 'ICRE 2026 · NuHF-Claw 报告参会证书',
+        en: 'ICRE 2026 · Certificate of participation for the NuHF-Claw presentation',
+      },
+    },
+  },
+  {
     id: '2026-doctoral-poster-first-prize',
     dateLabel: { zh: '2026 年', en: '2026' },
     category: { zh: '获奖消息', en: 'Award' },
