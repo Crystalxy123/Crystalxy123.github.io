@@ -288,6 +288,38 @@ export const news: NewsItem[] = [
     ],
   },
   {
+    id: '2026-doctoral-poster-first-prize',
+    dateLabel: { zh: '2026 年', en: '2026' },
+    category: { zh: '获奖消息', en: 'Award' },
+    title: {
+      zh: '获 2026 年博士生海报展示“优秀海报展示一等奖”',
+      en: 'First prize for an outstanding poster presentation at the 2026 doctoral student poster exhibition',
+    },
+    summary: {
+      zh: '在 2026 年博士生海报展示中，我获得“优秀海报展示一等奖”。感谢这份认可，也为这段科研经历留下一份值得珍藏的记录。',
+      en: 'I received first prize for an outstanding poster presentation at the 2026 doctoral student poster exhibition. I am grateful for this recognition and pleased to mark this milestone in my research journey.',
+    },
+    paragraphs: [
+      {
+        zh: '海报展示既是对阶段性研究的梳理，也是练习清晰表达科研思路的机会。接下来，我会继续踏实做好研究，认真打磨成果与表达，在学习和交流中不断进步。',
+        en: 'Preparing a poster is an opportunity to take stock of research progress and communicate ideas clearly. I will continue to work carefully on my research, improve how I present it, and learn through study and exchange.',
+      },
+    ],
+    image: {
+      src: '/images/news/2026-doctoral-poster-first-prize.png',
+      width: 1334,
+      height: 398,
+      alt: {
+        zh: '优秀海报展示一等奖获奖名单，萧星宇名列其中。',
+        en: 'The announcement of first-prize winners for outstanding poster presentations, including Xingyu Xiao.',
+      },
+      caption: {
+        zh: '2026 年博士生海报展示 · 优秀海报展示一等奖获奖名单',
+        en: '2026 doctoral student poster exhibition · First-prize announcement',
+      },
+    },
+  },
+  {
     id: 'harvard-undergraduates-ai-exchange',
     category: { zh: '学术交流', en: 'Academic exchange' },
     title: {
