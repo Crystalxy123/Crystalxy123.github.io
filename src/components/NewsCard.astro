@@ -26,7 +26,7 @@ const galleryImages = !compact && item.image && item.additionalImages?.length ? 
     {compact && <a class="news-read-more" href={articleUrl}>{lang === 'zh' ? '阅读全文' : 'Read the story'} <span aria-hidden="true">↗</span></a>}
   </div>
   {item.announcement ? (
-    <aside class="news-announcement" aria-label={lang === 'zh' ? '个人入选消息' : 'Personal selection announcement'}>
+    <aside class="news-announcement" aria-label={lang === 'zh' ? '个人动态' : 'Personal news'}>
       <p class="announcement-kicker">{lang === 'zh' ? '个人动态' : 'Personal news'}</p>
       <p class="announcement-detail">{t(item.announcement.detail, lang)}</p>
       <p class="announcement-acronym">{item.announcement.acronym}</p>
