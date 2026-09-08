@@ -38,7 +38,7 @@
 在 `src/data/news.ts` 的 `news` 数组中按事件日期由近到远加入记录；补录较早的活动时放到对应位置。首页显示前三条，新闻页面显示全部记录。
 
 - `id`：唯一的英文短名称，用作新闻链接中的定位标记。
-- `date`：事件日期；只确定月份时使用 `YYYY-MM`，确定具体日期时使用 `YYYY-MM-DD`。
+- `date`：事件日期；只确定月份时使用 `YYYY-MM`，确定具体日期时使用 `YYYY-MM-DD`。如果只知道“迎新期间”等时段，可省略 `date`，在 `dateLabel` 中如实描述，不补猜具体日期。
 - `dateLabel`、`category`、`title`、`summary`：分别填写中英文日期、分类、标题和摘要。
 - `paragraphs`：正文段落，每段都填写 `zh` 和 `en`。
 - `image`：将配图放到 `public/images/news/`，填写对应的 `/images/news/文件名`、图片实际宽高、中英文替代文字和图注。

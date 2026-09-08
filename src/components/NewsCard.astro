@@ -13,8 +13,8 @@ const galleryImages = !compact && item.additionalImages?.length ? [item.image, .
 <article class:list={['news-card', { 'news-card-compact': compact, 'news-card-portrait': item.image.height > item.image.width && galleryImages.length === 0 }]} id={item.id} aria-labelledby={`${item.id}-title`}>
   <div class="news-copy">
     <div class="news-meta">
-      <time datetime={item.date}>{t(item.dateLabel, lang)}</time>
-      <span>{t(item.category, lang)}</span>
+      {item.date ? <time datetime={item.date}>{t(item.dateLabel, lang)}</time> : <span>{t(item.dateLabel, lang)}</span>}
+      <span class="news-category">{t(item.category, lang)}</span>
     </div>
     <Heading id={`${item.id}-title`}>
       {compact ? <a href={articleUrl}>{t(item.title, lang)}</a> : t(item.title, lang)}
@@ -24,7 +24,7 @@ const galleryImages = !compact && item.additionalImages?.length ? [item.image, .
     {compact && <a class="news-read-more" href={articleUrl}>{lang === 'zh' ? '阅读全文' : 'Read the story'} <span aria-hidden="true">↗</span></a>}
   </div>
   {galleryImages.length > 0 ? (
-    <div class="news-gallery">
+    <div class:list={['news-gallery', { 'news-gallery-multiple': galleryImages.length > 2 }]}>
       {galleryImages.map((photo) => (
         <figure class:list={['news-figure', { 'news-figure-portrait': photo.height > photo.width }]}>
           <a href={photo.src} aria-label={`${lang === 'zh' ? '查看大图：' : 'View full size: '}${t(photo.caption, lang)}`}>
@@ -67,7 +67,7 @@ const galleryImages = !compact && item.additionalImages?.length ? [item.image, .
     font-variant-numeric: tabular-nums;
   }
 
-  .news-meta span {
+  .news-meta .news-category {
     padding-left: 20px;
     border-left: 1px solid var(--line-strong);
   }
@@ -129,6 +129,14 @@ const galleryImages = !compact && item.additionalImages?.length ? [item.image, .
     width: 100%;
     max-width: 480px;
     justify-self: center;
+  }
+
+  .news-gallery-multiple {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .news-gallery-multiple > .news-figure:first-child {
+    grid-column: 1 / -1;
   }
 
   figcaption {

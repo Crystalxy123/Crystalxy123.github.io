@@ -10,7 +10,7 @@ export type NewsImage = {
 
 export type NewsItem = {
   id: string;
-  date: string;
+  date?: string;
   dateLabel: Localized;
   category: Localized;
   title: Localized;
@@ -20,7 +20,7 @@ export type NewsItem = {
   additionalImages?: NewsImage[];
 };
 
-// Keep the latest news first. Dates can use YYYY-MM when the exact day is unspecified.
+// Keep the latest news first. Use YYYY-MM for a known month; omit date when only a season is known.
 export const news: NewsItem[] = [
   {
     id: '2026-inner-mongolia-talent-training',
@@ -120,6 +120,70 @@ export const news: NewsItem[] = [
         en: 'Opening ceremony presentation · Tanzhen Scholars program',
       },
     },
+  },
+  {
+    id: '2026-tanzhen-welcome-exhibition',
+    dateLabel: { zh: '2026 年迎新期间', en: '2026 welcome season' },
+    category: { zh: '成果展示', en: 'Research showcase' },
+    title: {
+      zh: '研究成果亮相探臻科技评论社迎新展区',
+      en: 'Research featured in the Tanzhen Science and Technology Review Society’s welcome exhibition',
+    },
+    summary: {
+      zh: '2026 年迎新期间，我参与的 KRAIL 人因可靠性智能分析框架及数字化核电主控室人因智能相关研究，在探臻科技评论社迎新展区以成果卡片的形式展示，与新同学见面。',
+      en: 'During the 2026 welcome season, research I contributed to—including the KRAIL framework for intelligent human reliability analysis and work on human factors in digital nuclear control rooms—was featured on research cards at the Tanzhen Science and Technology Review Society’s exhibition for new students.',
+    },
+    paragraphs: [
+      {
+        zh: 'KRAIL 成果卡介绍了融合 IDHEAS-DATA 与大语言模型的人因可靠性智能分析框架；另一张成果卡聚焦数字化核电主控室中的操作风险识别与安全决策，呈现核科学与技术、人因可靠性分析和人工智能交叉研究的思路。',
+        en: 'The KRAIL card introduces a framework combining IDHEAS-DATA with large language models for human reliability analysis. The second card focuses on identifying operational risks and supporting safety decisions in digital nuclear control rooms, presenting research at the intersection of nuclear science, human reliability, and artificial intelligence.',
+      },
+      {
+        zh: '从研究工作到迎新展板，这次展示也是一次面向不同专业同学的科技交流。感谢探臻科技评论社提供展示机会，期待借此结识更多关注核安全、人因智能与科技传播的同学，在交流中获得新的思考。',
+        en: 'Bringing this work to a welcome exhibition offers an opportunity to share research with students from different disciplines. I am grateful to the society for making the display possible and look forward to meeting more students interested in nuclear safety, human factors, and science communication.',
+      },
+    ],
+    image: {
+      src: '/images/news/2026-tanzhen-welcome-exhibition.jpg',
+      width: 1707,
+      height: 1280,
+      alt: {
+        zh: '探臻科技评论社迎新展区全景，展板陈列科技创新成果卡片及社群活动介绍。',
+        en: 'The Tanzhen Science and Technology Review Society’s welcome display, with research cards and an introduction to its activities.',
+      },
+      caption: {
+        zh: '探臻科技评论社迎新展区',
+        en: 'The society’s welcome exhibition',
+      },
+    },
+    additionalImages: [
+      {
+        src: '/images/news/2026-tanzhen-welcome-krail.jpg',
+        width: 1280,
+        height: 1707,
+        alt: {
+          zh: '迎新展区中的 KRAIL 成果卡，介绍融合 IDHEAS-DATA 与大语言模型的人因可靠性智能分析框架。',
+          en: 'A KRAIL research card presenting a human reliability analysis framework that combines IDHEAS-DATA with large language models.',
+        },
+        caption: {
+          zh: 'KRAIL · 人因可靠性智能分析框架',
+          en: 'KRAIL · Intelligent human reliability analysis',
+        },
+      },
+      {
+        src: '/images/news/2026-tanzhen-welcome-control-room.jpg',
+        width: 1280,
+        height: 1707,
+        alt: {
+          zh: '数字化核电主控室人因智能成果卡，展示人工智能驱动的操作风险识别与安全决策研究。',
+          en: 'A research card on AI-supported operational risk identification and safety decisions in digital nuclear control rooms.',
+        },
+        caption: {
+          zh: '数字化核电主控室 · 人因智能研究',
+          en: 'Digital nuclear control rooms · Human factors research',
+        },
+      },
+    ],
   },
   {
     id: '2026-inet-opening-ceremony',
