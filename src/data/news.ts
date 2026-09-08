@@ -8,6 +8,18 @@ export type NewsImage = {
   caption: Localized;
 };
 
+export type NewsParagraph = Localized & {
+  references?: { label: Localized; url: string }[];
+};
+
+export type NewsAnnouncement = {
+  acronym: string;
+  program: string;
+  title: Localized;
+  detail: Localized;
+  name: Localized;
+};
+
 export type NewsItem = {
   id: string;
   date?: string;
@@ -15,13 +27,55 @@ export type NewsItem = {
   category: Localized;
   title: Localized;
   summary: Localized;
-  paragraphs: Localized[];
-  image: NewsImage;
-  additionalImages?: NewsImage[];
-};
+  paragraphs: NewsParagraph[];
+} & (
+  | { image: NewsImage; additionalImages?: NewsImage[]; announcement?: never }
+  | { image?: never; additionalImages?: never; announcement: NewsAnnouncement }
+);
 
 // Keep the latest news first. Use YYYY-MM for a known month; omit date when only a season is known.
 export const news: NewsItem[] = [
+  {
+    id: 'genu-ypat-fourth-cohort',
+    date: '2026-09',
+    dateLabel: { zh: '2026 年 9 月', en: 'September 2026' },
+    category: { zh: '入选消息', en: 'Selection announcement' },
+    title: {
+      zh: '入选 UNICEF GenU 全球青年行动团队（YPAT）第四届成员',
+      en: 'Selected for the fourth cohort of UNICEF GenU’s Global Young People’s Action Team',
+    },
+    summary: {
+      zh: '我已入选 Generation Unlimited（GenU）全球青年行动团队（Young People’s Action Team，YPAT）第四届成员，期待与来自不同国家和背景的青年伙伴共同学习、参与行动。',
+      en: 'I have been selected for the fourth cohort of Generation Unlimited’s Global Young People’s Action Team (YPAT). I look forward to learning and taking action alongside young people from different countries and backgrounds.',
+    },
+    paragraphs: [
+      {
+        zh: 'GenU 是依托联合国儿童基金会（UNICEF）、连接公共部门、私营部门与青年的全球伙伴关系平台。YPAT 推动青年参与相关规划、项目及合作，让青年观点进入决策过程，关注教育、技能、创业与公民参与等领域。',
+        en: 'GenU is a global public-private-youth partnership anchored in UNICEF. YPAT brings young people’s perspectives into planning, programmes, partnerships, and decision-making, with experience spanning education, skills, entrepreneurship, and civic engagement.',
+        references: [
+          {
+            label: { zh: 'GenU 官方资料', en: 'About GenU' },
+            url: 'https://www.generationunlimited.org/documents/generation-unlimited-strategy-2026-2029',
+          },
+          {
+            label: { zh: 'YPAT 官方介绍', en: 'About YPAT' },
+            url: 'https://www.generationunlimited.org/young-peoples-action-team',
+          },
+        ],
+      },
+      {
+        zh: '感谢提名与支持，也感谢团队的认可。这份入选对我而言是一份鼓励，更是一份责任。未来希望结合自己的科研与科技传播经历，认真倾听不同青年的需求，在交流与协作中贡献力所能及的行动。',
+        en: 'I am grateful for the nomination, the support I received, and the team’s confidence in me. This selection is both encouragement and a responsibility. I hope to draw on my research and science communication experience, listen carefully to the needs of other young people, and contribute through collaboration and practical action.',
+      },
+    ],
+    announcement: {
+      acronym: 'YPAT',
+      program: 'GenU · Generation Unlimited',
+      title: { zh: '全球青年行动团队', en: 'Global Young People’s Action Team' },
+      detail: { zh: '第四届 · 入选成员', en: '4th cohort · Selected member' },
+      name: { zh: '萧星宇 · Xingyu Xiao', en: 'Xingyu Xiao' },
+    },
+  },
   {
     id: '2026-inner-mongolia-talent-training',
     date: '2026-09-06',

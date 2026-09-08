@@ -41,8 +41,10 @@
 - `date`：事件日期；只确定月份时使用 `YYYY-MM`，确定具体日期时使用 `YYYY-MM-DD`。如果只知道“迎新期间”等时段，可省略 `date`，在 `dateLabel` 中如实描述，不补猜具体日期。
 - `dateLabel`、`category`、`title`、`summary`：分别填写中英文日期、分类、标题和摘要。活动时间完全不明确时，可同时省略 `date` 和 `dateLabel`，页面仅显示分类；待时间确认后再补入相应位置。
 - `paragraphs`：正文段落，每段都填写 `zh` 和 `en`。
+- 段落需要出处时，可添加 `references`，每条填写中英文 `label` 和官方页面 `url`；链接应支持对应段落的介绍。
 - `image`：将配图放到 `public/images/news/`，填写对应的 `/images/news/文件名`、图片实际宽高、中英文替代文字和图注。
 - `additionalImages`（可选）：有多张配图时，按 `image` 的格式补充图片列表。新闻正文会同时展示主图和这些配图，首页摘要只使用主图。
+- 入选通知等消息也可使用 `announcement` 文字信息卡，代替 `image` 和 `additionalImages`：填写 `acronym`、`program`，以及中英文 `title`、`detail`、`name`。卡片标注为个人动态，不作为官方证书展示；无需上传含邮箱链接或他人名单的原始邮件截图。
 
 首页摘要、中文 `/news/` 和英文 `/en/news/` 会同步读取这份内容。新闻页保留完整图片，并支持查看大图。更新后同步修改 `public/sitemap.xml` 中首页与新闻页的日期，以及 `src/i18n/zh.ts`、`src/i18n/en.ts` 的更新时间。
 

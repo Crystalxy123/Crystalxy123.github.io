@@ -7,10 +7,10 @@ import type { Lang } from '../data/site';
 const { item, lang, compact = false } = Astro.props as { item: NewsItem; lang: Lang; compact?: boolean };
 const articleUrl = `${localizedPath(lang, 'news')}#${item.id}`;
 const Heading = compact ? 'h3' : 'h2';
-const galleryImages = !compact && item.additionalImages?.length ? [item.image, ...item.additionalImages] : [];
+const galleryImages = !compact && item.image && item.additionalImages?.length ? [item.image, ...item.additionalImages] : [];
 ---
 
-<article class:list={['news-card', { 'news-card-compact': compact, 'news-card-portrait': item.image.height > item.image.width && galleryImages.length === 0 }]} id={item.id} aria-labelledby={`${item.id}-title`}>
+<article class:list={['news-card', { 'news-card-compact': compact, 'news-card-portrait': item.image && item.image.height > item.image.width && galleryImages.length === 0, 'news-card-announcement': Boolean(item.announcement) }]} id={item.id} aria-labelledby={`${item.id}-title`}>
   <div class="news-copy">
     <div class="news-meta">
       {item.dateLabel && (item.date ? <time datetime={item.date}>{t(item.dateLabel, lang)}</time> : <span>{t(item.dateLabel, lang)}</span>)}
@@ -20,10 +20,21 @@ const galleryImages = !compact && item.additionalImages?.length ? [item.image, .
       {compact ? <a href={articleUrl}>{t(item.title, lang)}</a> : t(item.title, lang)}
     </Heading>
     <p class="news-summary">{t(item.summary, lang)}</p>
-    {!compact && item.paragraphs.map((paragraph) => <p>{t(paragraph, lang)}</p>)}
+    {!compact && item.paragraphs.map((paragraph) => (
+      <p>{t(paragraph, lang)}{paragraph.references?.map((reference) => <>{' '}<a class="news-reference" href={reference.url} target="_blank" rel="noopener">{t(reference.label, lang)} <span aria-hidden="true">↗</span></a></>)}</p>
+    ))}
     {compact && <a class="news-read-more" href={articleUrl}>{lang === 'zh' ? '阅读全文' : 'Read the story'} <span aria-hidden="true">↗</span></a>}
   </div>
-  {galleryImages.length > 0 ? (
+  {item.announcement ? (
+    <aside class="news-announcement" aria-label={lang === 'zh' ? '个人入选消息' : 'Personal selection announcement'}>
+      <p class="announcement-kicker">{lang === 'zh' ? '个人动态' : 'Personal news'}</p>
+      <p class="announcement-detail">{t(item.announcement.detail, lang)}</p>
+      <p class="announcement-acronym">{item.announcement.acronym}</p>
+      <p class="announcement-title">{t(item.announcement.title, lang)}</p>
+      <p class="announcement-program">{item.announcement.program}</p>
+      <p class="announcement-name">{t(item.announcement.name, lang)}</p>
+    </aside>
+  ) : galleryImages.length > 0 ? (
     <div class:list={['news-gallery', { 'news-gallery-multiple': galleryImages.length > 2 }]}>
       {galleryImages.map((photo) => (
         <figure class:list={['news-figure', { 'news-figure-portrait': photo.height > photo.width }]}>
@@ -34,7 +45,7 @@ const galleryImages = !compact && item.additionalImages?.length ? [item.image, .
         </figure>
       ))}
     </div>
-  ) : (
+  ) : item.image && (
   <figure class="news-figure">
     <a href={compact ? articleUrl : item.image.src} aria-label={compact ? t(item.title, lang) : `${lang === 'zh' ? '查看大图：' : 'View full size: '}${t(item.image.caption, lang)}`}>
       <img src={item.image.src} width={item.image.width} height={item.image.height} alt={t(item.image.alt, lang)} loading="lazy" decoding="async" />
@@ -100,6 +111,79 @@ const galleryImages = !compact && item.additionalImages?.length ? [item.image, .
     margin-bottom: 0;
   }
 
+  .news-reference {
+    display: inline-block;
+    margin-inline-start: 6px;
+    font-size: 0.875rem;
+  }
+
+  .news-card-announcement:not(.news-card-compact) {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: start;
+    gap: clamp(24px, 4vw, 48px);
+  }
+
+  .news-announcement {
+    min-width: 0;
+    border: 1px solid #c8dce8;
+    border-top: 4px solid #1785b5;
+    border-radius: var(--radius);
+    padding: clamp(24px, 3.5vw, 42px);
+    background: #edf5fa;
+    color: #17384e;
+  }
+
+  .announcement-kicker {
+    margin-bottom: 30px;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .announcement-detail {
+    margin-bottom: 18px;
+    font-size: 0.9375rem;
+    font-weight: 650;
+  }
+
+  .announcement-acronym {
+    margin-bottom: 12px;
+    font-size: clamp(3rem, 6vw, 4.7rem);
+    font-weight: 750;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .announcement-title {
+    margin-bottom: 16px;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    line-height: 1.5;
+  }
+
+  .announcement-program {
+    margin-bottom: 32px;
+    font-size: 0.875rem;
+  }
+
+  .announcement-name {
+    margin: 0;
+    border-top: 1px solid #b7cfde;
+    padding-top: 20px;
+    font-size: 1rem;
+    font-weight: 650;
+  }
+
+  :global(:root[data-theme='dark']) .news-announcement {
+    border-color: #34596e;
+    border-top-color: #64b9dc;
+    background: #173042;
+    color: #edf7fc;
+  }
+
+  :global(:root[data-theme='dark']) .announcement-name {
+    border-color: #456779;
+  }
+
   .news-figure {
     min-width: 0;
     margin: 0;
@@ -160,7 +244,8 @@ const galleryImages = !compact && item.additionalImages?.length ? [item.image, .
     grid-row: 1;
   }
 
-  .news-card-compact .news-figure {
+  .news-card-compact .news-figure,
+  .news-card-compact .news-announcement {
     grid-column: 1;
     grid-row: 1;
   }
@@ -196,13 +281,15 @@ const galleryImages = !compact && item.additionalImages?.length ? [item.image, .
     }
 
     .news-card-compact,
-    .news-card-portrait:not(.news-card-compact) {
+    .news-card-portrait:not(.news-card-compact),
+    .news-card-announcement:not(.news-card-compact) {
       grid-template-columns: minmax(0, 1fr);
       gap: 24px;
     }
 
     .news-card-compact .news-copy,
-    .news-card-compact .news-figure {
+    .news-card-compact .news-figure,
+    .news-card-compact .news-announcement {
       grid-column: auto;
       grid-row: auto;
     }
