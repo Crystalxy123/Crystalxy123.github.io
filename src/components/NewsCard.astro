@@ -7,9 +7,10 @@ import type { Lang } from '../data/site';
 const { item, lang, compact = false } = Astro.props as { item: NewsItem; lang: Lang; compact?: boolean };
 const articleUrl = `${localizedPath(lang, 'news')}#${item.id}`;
 const Heading = compact ? 'h3' : 'h2';
+const galleryImages = !compact && item.additionalImages?.length ? [item.image, ...item.additionalImages] : [];
 ---
 
-<article class:list={['news-card', { 'news-card-compact': compact, 'news-card-portrait': item.image.height > item.image.width }]} id={item.id} aria-labelledby={`${item.id}-title`}>
+<article class:list={['news-card', { 'news-card-compact': compact, 'news-card-portrait': item.image.height > item.image.width && galleryImages.length === 0 }]} id={item.id} aria-labelledby={`${item.id}-title`}>
   <div class="news-copy">
     <div class="news-meta">
       <time datetime={item.date}>{t(item.dateLabel, lang)}</time>
@@ -22,12 +23,25 @@ const Heading = compact ? 'h3' : 'h2';
     {!compact && item.paragraphs.map((paragraph) => <p>{t(paragraph, lang)}</p>)}
     {compact && <a class="news-read-more" href={articleUrl}>{lang === 'zh' ? '阅读全文' : 'Read the story'} <span aria-hidden="true">↗</span></a>}
   </div>
+  {galleryImages.length > 0 ? (
+    <div class="news-gallery">
+      {galleryImages.map((photo) => (
+        <figure class:list={['news-figure', { 'news-figure-portrait': photo.height > photo.width }]}>
+          <a href={photo.src} aria-label={`${lang === 'zh' ? '查看大图：' : 'View full size: '}${t(photo.caption, lang)}`}>
+            <img src={photo.src} width={photo.width} height={photo.height} alt={t(photo.alt, lang)} loading="lazy" decoding="async" />
+          </a>
+          <figcaption><span>{t(photo.caption, lang)}</span><a href={photo.src}>{lang === 'zh' ? '查看大图' : 'View full size'} <span aria-hidden="true">↗</span></a></figcaption>
+        </figure>
+      ))}
+    </div>
+  ) : (
   <figure class="news-figure">
     <a href={compact ? articleUrl : item.image.src} aria-label={compact ? t(item.title, lang) : `${lang === 'zh' ? '查看大图：' : 'View full size: '}${t(item.image.caption, lang)}`}>
       <img src={item.image.src} width={item.image.width} height={item.image.height} alt={t(item.image.alt, lang)} loading="lazy" decoding="async" />
     </a>
     {!compact && <figcaption><span>{t(item.image.caption, lang)}</span><a href={item.image.src}>{lang === 'zh' ? '查看大图' : 'View full size'} <span aria-hidden="true">↗</span></a></figcaption>}
   </figure>
+  )}
 </article>
 
 <style>
@@ -104,6 +118,19 @@ const Heading = compact ? 'h3' : 'h2';
     height: auto;
   }
 
+  .news-gallery {
+    display: grid;
+    grid-template-columns: minmax(0, 16fr) minmax(0, 9fr);
+    align-items: start;
+    gap: 24px;
+  }
+
+  .news-gallery .news-figure-portrait {
+    width: 100%;
+    max-width: 480px;
+    justify-self: center;
+  }
+
   figcaption {
     display: flex;
     justify-content: space-between;
@@ -156,6 +183,10 @@ const Heading = compact ? 'h3' : 'h2';
   }
 
   @media (max-width: 800px) {
+    .news-gallery {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
     .news-card-compact,
     .news-card-portrait:not(.news-card-compact) {
       grid-template-columns: minmax(0, 1fr);

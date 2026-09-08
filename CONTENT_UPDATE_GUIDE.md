@@ -35,13 +35,14 @@
 
 ## 新增新闻
 
-在 `src/data/news.ts` 的 `news` 数组顶部加入一条记录：首页显示最新三条，新闻页面显示全部记录。
+在 `src/data/news.ts` 的 `news` 数组中按事件日期由近到远加入记录；补录较早的活动时放到对应位置。首页显示前三条，新闻页面显示全部记录。
 
 - `id`：唯一的英文短名称，用作新闻链接中的定位标记。
 - `date`：事件日期；只确定月份时使用 `YYYY-MM`，确定具体日期时使用 `YYYY-MM-DD`。
 - `dateLabel`、`category`、`title`、`summary`：分别填写中英文日期、分类、标题和摘要。
 - `paragraphs`：正文段落，每段都填写 `zh` 和 `en`。
 - `image`：将配图放到 `public/images/news/`，填写对应的 `/images/news/文件名`、图片实际宽高、中英文替代文字和图注。
+- `additionalImages`（可选）：有多张配图时，按 `image` 的格式补充图片列表。新闻正文会同时展示主图和这些配图，首页摘要只使用主图。
 
 首页摘要、中文 `/news/` 和英文 `/en/news/` 会同步读取这份内容。新闻页保留完整图片，并支持查看大图。更新后同步修改 `public/sitemap.xml` 中首页与新闻页的日期，以及 `src/i18n/zh.ts`、`src/i18n/en.ts` 的更新时间。
 

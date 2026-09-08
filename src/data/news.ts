@@ -1,5 +1,13 @@
 import type { Localized } from './site';
 
+export type NewsImage = {
+  src: string;
+  width: number;
+  height: number;
+  alt: Localized;
+  caption: Localized;
+};
+
 export type NewsItem = {
   id: string;
   date: string;
@@ -8,13 +16,8 @@ export type NewsItem = {
   title: Localized;
   summary: Localized;
   paragraphs: Localized[];
-  image: {
-    src: string;
-    width: number;
-    height: number;
-    alt: Localized;
-    caption: Localized;
-  };
+  image: NewsImage;
+  additionalImages?: NewsImage[];
 };
 
 // Keep the latest news first. Dates can use YYYY-MM when the exact day is unspecified.
@@ -117,5 +120,53 @@ export const news: NewsItem[] = [
         en: 'Opening ceremony presentation · Tanzhen Scholars program',
       },
     },
+  },
+  {
+    id: '2026-inet-opening-ceremony',
+    date: '2026-08-27',
+    dateLabel: { zh: '2026 年 8 月 27 日', en: 'August 27, 2026' },
+    category: { zh: '校园活动', en: 'Campus life' },
+    title: {
+      zh: '作为老生代表出席核研院 2026 年开学典礼',
+      en: 'Representing returning students at INET’s 2026 opening ceremony',
+    },
+    summary: {
+      zh: '2026 年 8 月 27 日，我作为老生代表出席清华大学核能与新能源技术研究院 2026 年新生开学典礼。',
+      en: 'On August 27, 2026, I attended the opening ceremony for new students at Tsinghua University’s Institute of Nuclear and New Energy Technology (INET) as a representative of returning students.',
+    },
+    paragraphs: [
+      {
+        zh: '感谢学院的信任，让我有机会以老生代表的身份迎接新同学。对我而言，这既是一份荣誉，也是一份责任。愿与新同学一起，在踏实求学、认真科研的日常中积累经验、共同成长。',
+        en: 'I am grateful to the institute for trusting me with the opportunity to welcome the new students. It was both an honor and a responsibility. I look forward to learning and growing alongside them through the everyday work of study and research.',
+      },
+    ],
+    image: {
+      src: '/images/news/2026-inet-opening-ceremony.jpg',
+      width: 1702,
+      height: 1276,
+      alt: {
+        zh: '核能与新能源技术研究院 2026 年开学典礼现场，讲台前的发言场景。',
+        en: 'A scene at the podium during INET’s 2026 opening ceremony.',
+      },
+      caption: {
+        zh: '核研院 2026 年开学典礼现场',
+        en: 'INET’s 2026 opening ceremony',
+      },
+    },
+    additionalImages: [
+      {
+        src: '/images/news/2026-inet-opening-speech.jpg',
+        width: 1280,
+        height: 1707,
+        alt: {
+          zh: '为开学典礼准备的老生代表发言稿，包含对新同学的问候及科研经历分享。',
+          en: 'A prepared speech for the returning student representative, welcoming new students and sharing research experience.',
+        },
+        caption: {
+          zh: '老生代表发言稿 · 片段',
+          en: 'Prepared remarks · excerpt',
+        },
+      },
+    ],
   },
 ];
