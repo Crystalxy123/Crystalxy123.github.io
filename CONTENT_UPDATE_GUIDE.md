@@ -48,6 +48,17 @@
 
 首页摘要、中文 `/news/` 和英文 `/en/news/` 会同步读取这份内容。新闻页保留完整图片，并支持查看大图。更新后同步修改 `public/sitemap.xml` 中首页与新闻页的日期，以及 `src/i18n/zh.ts`、`src/i18n/en.ts` 的更新时间。
 
+## 新增书单
+
+在 `src/data/books.ts` 的 `books` 数组中新增书目。中文 `/books/`、英文 `/en/books/` 和主导航“书单”入口会读取这些内容。
+
+- `id`：唯一的英文短名称，用于定位书目。
+- `title`、`author`、`category`、`description`：分别填写中英文书名、作者、分类和简短介绍。
+- `sourceUrl`：可核对图书资料的公开链接。
+- 只写有依据的图书介绍；没有本人提供的阅读记录时，不添加“已读”、评分、读后感或个人引语。
+
+新增书目后，更新两种语言书单页面的简介及站点地图日期，并运行 `npm run check`。
+
 ## 新增论文
 
 在 `src/data/site.ts` 的 `publications` 数组顶部加入一条记录，并填写：

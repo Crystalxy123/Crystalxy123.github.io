@@ -4,7 +4,7 @@ export type UiDictionary = {
   languageSwitch: string;
   skip: string;
   siteName: string;
-  nav: Record<'home' | 'news' | 'about' | 'research' | 'publications' | 'projects' | 'honors' | 'service' | 'contact', string>;
+  nav: Record<'home' | 'news' | 'about' | 'research' | 'publications' | 'projects' | 'honors' | 'service' | 'books' | 'contact', string>;
   theme: string;
   menu: string;
   closeMenu: string;
@@ -34,6 +34,7 @@ export const zh: UiDictionary = {
     projects: '项目',
     honors: '荣誉',
     service: '服务',
+    books: '书单',
     contact: '联系',
   },
   theme: '切换深色或浅色模式',

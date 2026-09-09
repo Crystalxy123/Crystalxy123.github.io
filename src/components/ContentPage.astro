@@ -6,6 +6,7 @@ import type { Lang } from '../data/site';
 import ProjectCard from './ProjectCard.astro';
 import PublicationItem from './PublicationItem.astro';
 import NewsCard from './NewsCard.astro';
+import BookList from './BookList.astro';
 
 const { lang, section } = Astro.props as { lang: Lang; section: Section };
 const copy = {
@@ -49,6 +50,11 @@ const copy = {
     title: { zh: '联系方式', en: 'Contact' },
     intro: { zh: '如需讨论公开研究、论文或项目合作，请通过邮件联系。请勿发送敏感运行数据或未公开材料。', en: 'Please use email for questions about public research, papers, or project collaboration. Do not send sensitive operational data or unpublished material.' },
   },
+  books: {
+    label: { zh: '阅读', en: 'Reading' },
+    title: { zh: '我的书单', en: 'My reading list' },
+    intro: { zh: '研究之外的阅读。', en: 'Reading beyond research.' },
+  },
 } as const;
 const hero = copy[section];
 const years = [...new Set(publications.map((item) => item.year))].sort((a, b) => b - a);
@@ -57,7 +63,7 @@ const projectTopics = [...new Set(projects.flatMap((item) => item.topics))].sort
 const projectStatuses = [...new Set(projects.map((item) => item.status))];
 ---
 
-<header class:list={['page-hero', 'section-shell', { 'news-page-hero': section === 'news' }]}>
+<header class:list={['page-hero', 'section-shell', { 'news-page-hero': section === 'news', 'books-page-hero': section === 'books' }]}>
   <p class="kicker"><span></span>{t(hero.label, lang)}</p>
   <h1>{t(hero.title, lang)}</h1>
   <p>{t(hero.intro, lang)}</p>
@@ -66,6 +72,12 @@ const projectStatuses = [...new Set(projects.map((item) => item.status))];
 {section === 'news' && (
   <div class="page-content section-shell news-list">
     {news.map((item) => <NewsCard item={item} lang={lang} />)}
+  </div>
+)}
+
+{section === 'books' && (
+  <div class="page-content section-shell books-page-content">
+    <BookList lang={lang} />
   </div>
 )}
 

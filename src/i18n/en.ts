@@ -15,6 +15,7 @@ export const en = {
     projects: 'Projects',
     honors: 'Honors',
     service: 'Service',
+    books: 'Books',
     contact: 'Contact',
   },
   theme: 'Toggle dark or light theme',

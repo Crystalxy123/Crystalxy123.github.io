@@ -8,6 +8,7 @@ export const sections = [
   'projects',
   'honors',
   'service',
+  'books',
   'contact',
 ] as const;
 

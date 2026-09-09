@@ -1905,18 +1905,21 @@ h3 {
 .project-card .results-link { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
 
 /* News follows the site's restrained typography and uses the complete source photo. */
-.news-page-hero {
+.news-page-hero,
+.books-page-hero {
   display: block;
   max-width: 1040px;
   padding-block: clamp(40px, 6vw, 72px) 40px;
 }
 
-.news-page-hero h1 {
+.news-page-hero h1,
+.books-page-hero h1 {
   margin: 12px 0 16px;
   font-size: clamp(2.2rem, 4vw, 3.2rem);
 }
 
-.news-page-hero > p:last-child {
+.news-page-hero > p:last-child,
+.books-page-hero > p:last-child {
   max-width: 640px;
   margin-bottom: 0;
 }
@@ -1955,6 +1958,7 @@ h3 {
   border-top: 1px solid var(--line);
 }
 
-.news-list {
+.news-list,
+.books-page-content {
   max-width: 1040px;
 }

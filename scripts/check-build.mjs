@@ -80,7 +80,7 @@ function scanText(directory) {
 
 scanText(root);
 
-for (const required of ['index.html', 'en/index.html', 'news/index.html', 'en/news/index.html', '404.html', 'sitemap.xml', 'robots.txt', 'CNAME']) {
+for (const required of ['index.html', 'en/index.html', 'news/index.html', 'en/news/index.html', 'books/index.html', 'en/books/index.html', '404.html', 'sitemap.xml', 'robots.txt', 'CNAME']) {
   if (!existsSync(join(root, required))) errors.push(`missing required output: ${required}`);
 }
 
