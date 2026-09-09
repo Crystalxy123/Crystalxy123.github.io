@@ -394,6 +394,32 @@ export const news: NewsItem[] = [
     },
   },
   {
+    id: '2025-cast-doctoral-talent-program',
+    dateLabel: { zh: '2025 年度', en: '2025 cohort' },
+    category: { zh: '入选消息', en: 'Selection announcement' },
+    title: {
+      zh: '入选 2025 年度中国科协青年科技人才培育工程博士生专项计划',
+      en: 'Selected for CAST’s 2025 doctoral talent development program',
+    },
+    summary: {
+      zh: '我已入选 2025 年度中国科协青年科技人才培育工程博士生专项计划，托举学会为中国辐射防护学会。',
+      en: 'I have been selected for the 2025 doctoral student program under the China Association for Science and Technology’s (CAST) young scientific and technological talent development initiative, with the China Society of Radiation Protection (CSRP) as my supporting society.',
+    },
+    paragraphs: [
+      {
+        zh: '感谢中国科协及中国辐射防护学会的认可与支持，也感谢求学和科研路上给予我帮助的老师与伙伴。这份入选是一份鼓励，也提醒我要珍惜学习机会、踏实做好研究。接下来，我会继续认真做好核安全与人因研究，在学习和交流中不断完善自己的工作。',
+        en: 'I am grateful to CAST and CSRP for their recognition and support, and to the teachers and peers who have helped me along the way. This selection is an encouragement to make the most of learning opportunities and approach research with care. I will continue my work on nuclear safety and human factors, learning through study and exchange.',
+      },
+    ],
+    announcement: {
+      acronym: 'CAST',
+      program: 'China Association for Science and Technology',
+      title: { zh: '青年科技人才培育工程 · 博士生专项计划', en: 'Young talent development · Doctoral student program' },
+      detail: { zh: '2025 年度 · 入选', en: '2025 cohort · Selected' },
+      name: { zh: '萧星宇 · Xingyu Xiao', en: 'Xingyu Xiao' },
+    },
+  },
+  {
     id: 'sdg7-youth-network-global-coordination',
     category: { zh: '青年行动', en: 'Youth action' },
     title: {
